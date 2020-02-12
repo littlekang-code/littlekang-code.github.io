@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.littlekang.xyz/"/>
-  <updated>2020-02-12T13:05:11.529Z</updated>
+  <updated>2020-02-12T16:55:56.648Z</updated>
   <id>http://blog.littlekang.xyz/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Typoro PicGo MarkDown协同工作</title>
+    <link href="http://blog.littlekang.xyz/article/32c0b2ae/"/>
+    <id>http://blog.littlekang.xyz/article/32c0b2ae/</id>
+    <published>2020-02-12T16:12:38.000Z</published>
+    <updated>2020-02-12T16:55:56.648Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Tyora简介&quot;&gt;&lt;a href=&quot;#Tyora简介&quot; class=&quot;headerlink&quot; title=&quot;Tyora简介&quot;&gt;&lt;/a&gt;Tyora简介&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;官网：&lt;a href=&quot;https://typora.io/&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="高效" scheme="http://blog.littlekang.xyz/categories/%E9%AB%98%E6%95%88/"/>
+    
+    
+      <category term="tools" scheme="http://blog.littlekang.xyz/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo cmd</title>
