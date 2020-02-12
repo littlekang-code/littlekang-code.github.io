@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>hexo cmd</title>
+      <link href="/article/339e02f9/"/>
+      <url>/article/339e02f9/</url>
+      
+        <content type="html"><![CDATA[<h1 id="新建网站"><a href="#新建网站" class="headerlink" title="新建网站"></a>新建网站</h1><pre><code>hexo init [folder]</code></pre><p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p><h1 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h1><pre><code>hexo new [layout] &lt;title&gt;</code></pre><p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">_config.yml</a> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来。</p><pre><code>hexo new &quot;post title with whitespace&quot;</code></pre><table><thead><tr><th align="left">参数</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>-p</code>, <code>--path</code></td><td align="left">自定义新文章的路径</td></tr><tr><td align="left"><code>-r</code>, <code>--replace</code></td><td align="left">如果存在同名文章，将其替换</td></tr><tr><td align="left"><code>-s</code>, <code>--slug</code></td><td align="left">文章的 Slug，作为新文章的文件名和发布后的 URL</td></tr></tbody></table><p>默认情况下，Hexo 会使用文章的标题来决定文章文件的路径。对于独立页面来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件。你可以使用 <code>--path</code> 参数来覆盖上述行为、自行决定文件的目录：</p><pre><code>hexo new page --path about/me &quot;About me&quot;</code></pre><p>以上命令会创建一个 <code>source/about/me.md</code> 文件，同时 Front Matter 中的 title 为 <code>&quot;About me&quot;</code></p><p>注意！title 是必须指定的！如果你这么做并不能达到你的目的：</p><pre><code>hexo new page --path about/me</code></pre><p>此时 Hexo 会创建 <code>source/_posts/about/me.md</code>，同时 <code>me.md</code> 的 Front Matter 中的 title 为 <code>&quot;page&quot;</code>。这是因为在上述命令中，hexo-cli 将 <code>page</code> 视为指定文章的标题、并采用默认的 <code>layout</code>。</p><h1 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h1><pre><code>hexo g</code></pre><p>生成静态文件。</p><table><thead><tr><th align="left">选项</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>-d</code>, <code>--deploy</code></td><td align="left">文件生成后立即部署网站</td></tr><tr><td align="left"><code>-w</code>, <code>--watch</code></td><td align="left">监视文件变动</td></tr><tr><td align="left"><code>-b</code>, <code>--bail</code></td><td align="left">生成过程中如果发生任何未处理的异常则抛出异常</td></tr><tr><td align="left"><code>-f</code>, <code>--force</code></td><td align="left">强制重新生成文件 Hexo 引入了差分机制，如果 <code>public</code> 目录存在，那么 <code>hexo g</code> 只会重新生成改动的文件。 使用该参数的效果接近 <code>hexo clean &amp;&amp; hexo generate</code></td></tr><tr><td align="left"><code>-c</code>, <code>--concurrency</code></td><td align="left">最大同时生成文件的数量，默认无限制</td></tr></tbody></table><h1 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h1><pre><code>hexo s</code></pre><p>默认情况下，访问网址为： <code>http://localhost:4000/</code>。</p><table><thead><tr><th align="left">选项</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>-p</code>, <code>--port</code></td><td align="left">重设端口</td></tr><tr><td align="left"><code>-s</code>, <code>--static</code></td><td align="left">只使用静态文件</td></tr><tr><td align="left"><code>-l</code>, <code>--log</code></td><td align="left">启动日记记录，使用覆盖记录格式</td></tr></tbody></table><h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>hexo d</code></pre><h1 id="清除生成的静态页面"><a href="#清除生成的静态页面" class="headerlink" title="清除生成的静态页面"></a>清除生成的静态页面</h1><pre><code>hexo clean</code></pre><p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p><p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p><p>引用地址：</p><p>从hexo.io说明文档拷贝</p><blockquote><p><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands.html</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hello world</title>
+      <link href="/article/d4a1185/"/>
+      <url>/article/d4a1185/</url>
+      
+        <content type="html"><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这是一个测试。<br><img src="https://s2.ax1x.com/2020/02/10/15r7oF.png" alt="15r7oF.png"></p><h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello world !\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><blockquote><p><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

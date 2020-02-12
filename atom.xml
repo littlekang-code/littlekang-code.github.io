@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>行走的康康</title>
+  
+  <subtitle>KangKang</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.littlekang.xyz/"/>
+  <updated>2020-02-12T13:05:11.529Z</updated>
+  <id>http://blog.littlekang.xyz/</id>
+  
+  <author>
+    <name>Kang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo cmd</title>
+    <link href="http://blog.littlekang.xyz/article/339e02f9/"/>
+    <id>http://blog.littlekang.xyz/article/339e02f9/</id>
+    <published>2020-02-12T03:54:06.000Z</published>
+    <updated>2020-02-12T13:05:11.529Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;新建网站&quot;&gt;&lt;a href=&quot;#新建网站&quot; class=&quot;headerlink&quot; title=&quot;新建网站&quot;&gt;&lt;/a&gt;新建网站&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;hexo init [folder]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;新建一个网站。如果没有设置
+        
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="http://blog.littlekang.xyz/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="test" scheme="http://blog.littlekang.xyz/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello world</title>
+    <link href="http://blog.littlekang.xyz/article/d4a1185/"/>
+    <id>http://blog.littlekang.xyz/article/d4a1185/</id>
+    <published>2020-02-10T09:13:04.000Z</published>
+    <updated>2020-02-12T13:05:11.527Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;这是一个测试。&lt;br&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/10/15r7oF.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="http://blog.littlekang.xyz/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="test" scheme="http://blog.littlekang.xyz/tags/test/"/>
+    
+  </entry>
+  
+</feed>
