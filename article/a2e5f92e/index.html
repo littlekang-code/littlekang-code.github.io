@@ -504,7 +504,7 @@ patch">
 <p><strong>include $(INCLUDE_DIR)/package.mk</strong></p>
 </blockquote>
 <p>由这些Makefile子文件确定软件包加入OpenWrt的方式和方法。$(TOPDIR)/rules.mk一般在Makefile的开头，$(INCLUDE_DIR)/kernel.mk文件对于软件包为内核时是不可缺少的，$(INCLUDE_DIR)/package.mk一般在软件包的基本信息完成后再引入。</p>
-<h1 id="示例Makefile"><a href="#示例Makefile" class="headerlink" title="示例Makefile"></a>示例Makefile</h1><pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">include</span> <span class="token variable">$</span><span class="token punctuation">(</span>TOPDIR<span class="token punctuation">)</span>/rules.mk
+<h2 id="示例Makefile"><a href="#示例Makefile" class="headerlink" title="示例Makefile"></a>示例Makefile</h2><pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">include</span> <span class="token variable">$</span><span class="token punctuation">(</span>TOPDIR<span class="token punctuation">)</span>/rules.mk
 
 PKG_NAME<span class="token operator">:=</span>bridge
 PKG_VERSION<span class="token operator">:=</span>1.0.6
@@ -615,7 +615,7 @@ endef<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <li><strong>AUTOLOAD</strong> 表示自动装入内核，一般表示方法为：<br> <code>AUTOLOAD:=$(call AutoLoad, $(PRIORITY),$(AUTOLOAD_MODS))</code><br> AutoLoad的第一个参数$(PRIORITY)为优先级，01为最优先，99为最后装载。有关自动装载可以在/etc/modules.d目录下看到，第二个参数$(AUTOLOAD_MODS)模块名，每个模块名以空格符分隔。即可同时装载多个内核模块。<br> 在开发过程最好不要使用自动装载，经过严格调试后再使用，可以减轻调试的工作量。</li>
 </ul>
 <h2 id="使用定义"><a href="#使用定义" class="headerlink" title="使用定义"></a>使用定义</h2><p>完成前面定义后，必须使用eval函数实现各种定义。其格式为：<br> 对于一般应用软件包<br> <code>$(eval $(call Package, $(PKG_NAME)))</code><br> 或对于内核驱动模块<br> <code>$(eval $(call KernelPackage, $(PKG_NAME)))</code><br> 如果一个软件包有多个程序，例如：一个应用程序有自己的内核驱动模块，上面使用PKG_NAME需要灵活变通。eval函数可以设计多个。也可以当成多个软件包处理。</p>
-<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><blockquote>
+<h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
 <p><a href="https://www.jianshu.com/p/21c8937ac7ea" target="_blank" rel="noopener">https://www.jianshu.com/p/21c8937ac7ea</a></p>
 <p><a href="https://openwrt.org/zh-cn/doc/devel/packages" target="_blank" rel="noopener">https://openwrt.org/zh-cn/doc/devel/packages</a></p>
 </blockquote>
