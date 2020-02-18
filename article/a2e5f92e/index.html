@@ -8,7 +8,8 @@
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="相关知识
+    <meta name="description" content="[TOC]
+相关知识
 
 
 https://lingxiankong.github.io/2014-01-06-linux-install.html
@@ -17,8 +18,7 @@ Openwrt软件源码包的结构
 Makefile(必选)
 提供了下载、编译、安装的步骤
 
-
-patch">
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -455,14 +455,14 @@ patch">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
                 
@@ -478,7 +478,8 @@ patch">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200217214719.png" alt></p>
+                <p>[TOC]</p>
+<h1 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200217214719.png" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200217214930.png" alt></p>
 <blockquote>
 <p><a href="https://lingxiankong.github.io/2014-01-06-linux-install.html" target="_blank" rel="noopener">https://lingxiankong.github.io/2014-01-06-linux-install.html</a></p>
@@ -567,7 +568,7 @@ PKG_CAT<span class="token operator">:=</span>zcat
 <li><strong>DEPENDS</strong> 表示与其他软件的依赖。<strong>运行本软件依赖的其他包</strong>。如果存在多个依赖，则每个依赖需要用空格分开。依赖前使用+号表示默认为显示，即对象没有选中时也会显示，使用@则默认为不显示，即当依赖对象选中后才显示。</li>
 </ul>
 <blockquote>
-<p>在用户空间的应用程序软件包中没有内核驱动模块的AUTOLOAD参数。<strong>如果应用软件需要在boot时自动运行，则需要在/etc/init.d中增加相应的脚本文件。脚本文件需要START参数，说明在boot时的优先级，如果在boot过程启动后再关闭，则需要进一步设置STOP参数。如果STOP参数存在，其值必须大于START。脚本文件需要start()和stop()两个函数，start()是执行程序，stop()是关闭程序。</strong>关闭程序一般需要执行killall命令。由/etc/rc.d/S10boot知道，装载内核驱动模块的优先级为10，需要使用自己设计的内核驱动模块的程序其START的值必须大于10。同样由/etc/rc.d/S40network知道，使用网络通信的程序其START的值必须大于40。</p>
+<p>在用户空间的应用程序软件包中没有内核驱动模块的AUTOLOAD参数。<strong>如果应用软件需要在boot时自动运行，则需要在/etc/init.d中增加相应的脚本文件。脚本文件需要START参数，说明在boot时的优先级，如果在boot过程启动后再关闭，则需要进一步设置STOP参数。如果STOP参数存在，其值必须大于START。脚本文件需要start()和stop()两个函数，start()是执行程序，stop()是关闭程序。</strong>关闭程序一般需要执行killall命令。<strong>由/etc/rc.d/S10boot知道，装载内核驱动模块的优先级为10，需要使用自己设计的内核驱动模块的程序其START的值必须大于10。同样由/etc/rc.d/S40network知道，使用网络通信的程序其START的值必须大于40</strong>。</p>
 </blockquote>
 <ul>
 <li><strong>Package/$(PKG_NAME)/conffiles</strong> 本包安装的配置文件，一行一个。如果文件结尾使用/，则表示为目录。用于备份配置文件说明，在sysupgrade命令执行时将会用到。</li>
@@ -584,7 +585,7 @@ endef<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 </ul>
 <pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">define</span> Build/Compile
     <span class="token variable">$</span><span class="token punctuation">(</span>MAKE<span class="token punctuation">)</span> -C <span class="token variable">$</span><span class="token punctuation">(</span>PKG_BUILD_DIR<span class="token punctuation">)</span> \
-    <span class="token variable">$</span><span class="token punctuation">(</span>TARGET_CONFIGURE_OPTS<span class="token punctuation">)</span>   CFLAGS<span class="token operator">=</span><span class="token string">"$(TARGET_CFLAGS) -I $(LINUX_DIR)/include"</span>
+    <span class="token variable">$</span><span class="token punctuation">(</span>TARGET_CONFIGURE_OPTS<span class="token punctuation">)</span> CFLAGS<span class="token operator">=</span><span class="token string">"$(TARGET_CFLAGS) -I $(LINUX_DIR)/include"</span>
 <span class="token keyword">endef</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>Package/$(PKG_NAME)/install</strong> 软件包的安装方法，包括一系列拷贝编译好的文件到指定位置。<strong>调用时会带一个参数，就是嵌入式系统的镜像文件系统目录</strong>，因此<strong>$(1)表示嵌入式系统的镜像目录</strong>。一般可以采用下面的方法：</li>
@@ -615,10 +616,32 @@ endef<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <li><strong>AUTOLOAD</strong> 表示自动装入内核，一般表示方法为：<br> <code>AUTOLOAD:=$(call AutoLoad, $(PRIORITY),$(AUTOLOAD_MODS))</code><br> AutoLoad的第一个参数$(PRIORITY)为优先级，01为最优先，99为最后装载。有关自动装载可以在/etc/modules.d目录下看到，第二个参数$(AUTOLOAD_MODS)模块名，每个模块名以空格符分隔。即可同时装载多个内核模块。<br> 在开发过程最好不要使用自动装载，经过严格调试后再使用，可以减轻调试的工作量。</li>
 </ul>
 <h2 id="使用定义"><a href="#使用定义" class="headerlink" title="使用定义"></a>使用定义</h2><p>完成前面定义后，必须使用eval函数实现各种定义。其格式为：<br> 对于一般应用软件包<br> <code>$(eval $(call Package, $(PKG_NAME)))</code><br> 或对于内核驱动模块<br> <code>$(eval $(call KernelPackage, $(PKG_NAME)))</code><br> 如果一个软件包有多个程序，例如：一个应用程序有自己的内核驱动模块，上面使用PKG_NAME需要灵活变通。eval函数可以设计多个。也可以当成多个软件包处理。</p>
-<h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
+<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><blockquote>
 <p><a href="https://www.jianshu.com/p/21c8937ac7ea" target="_blank" rel="noopener">https://www.jianshu.com/p/21c8937ac7ea</a></p>
 <p><a href="https://openwrt.org/zh-cn/doc/devel/packages" target="_blank" rel="noopener">https://openwrt.org/zh-cn/doc/devel/packages</a></p>
 </blockquote>
+<h1 id="开机自启动配置"><a href="#开机自启动配置" class="headerlink" title="开机自启动配置"></a>开机自启动配置</h1><ul>
+<li><p>创建文件夹</p>
+<pre class="line-numbers language-shell"><code class="language-shell">mkdir -p package/helloworld/files
+cd package/helloworld/files
+touch helloworld<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>编写脚本<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218113811.png" alt></p>
+</li>
+<li><p>修改helloworld 目录下的Makefile<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218113854.png" alt></p>
+</li>
+</ul>
+<h1 id="重复安装保留配置文件"><a href="#重复安装保留配置文件" class="headerlink" title="重复安装保留配置文件"></a>重复安装保留配置文件</h1><ul>
+<li><p>问题<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218114051.png" alt></p>
+</li>
+<li><p>解决方法<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218114157.png" alt></p>
+</li>
+<li><p>引用</p>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/34512804/how-to-keep-config-after-reinstall-ipk-on-openwrt" target="_blank" rel="noopener">https://stackoverflow.com/questions/34512804/how-to-keep-config-after-reinstall-ipk-on-openwrt</a></p>
+</blockquote>
+</li>
+</ul>
 
             </div>
             <hr />
@@ -734,7 +757,8 @@ endef<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            相关知识
+                            [TOC]
+相关知识
 
 
 https://lingxiankong.github.io/2014-01-06-linux-install.html
@@ -744,7 +768,6 @@ Makefile(必选)
 提供了下载、编译、安装的步骤
 
 
-patch
                         
                     </div>
                     <div class="publish-info">
