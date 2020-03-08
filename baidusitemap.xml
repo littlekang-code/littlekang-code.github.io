@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.littlekang.xyz/article/b3de8d7/</loc>
+    <lastmod>2020-03-08</lastmod>
+  </url>  <url>
     <loc>http://blog.littlekang.xyz/article/a2e5f92e/</loc>
-    <lastmod>2020-02-18</lastmod>
-  </url>  <url>
-    <loc>http://blog.littlekang.xyz/article/339e02f9/</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://blog.littlekang.xyz/article/d4a1185/</loc>
-    <lastmod>2020-02-16</lastmod>
+    <lastmod>2020-02-23</lastmod>
   </url>  <url>
     <loc>http://blog.littlekang.xyz/article/32c0b2ae/</loc>
-    <lastmod>2020-02-16</lastmod>
+    <lastmod>2020-02-12</lastmod>
+  </url>  <url>
+    <loc>http://blog.littlekang.xyz/article/339e02f9/</loc>
+    <lastmod>2020-02-12</lastmod>
+  </url>  <url>
+    <loc>http://blog.littlekang.xyz/article/d4a1185/</loc>
+    <lastmod>2020-02-12</lastmod>
   </url>
 </urlset>

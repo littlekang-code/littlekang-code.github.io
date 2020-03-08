@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.littlekang.xyz/"/>
-  <updated>2020-02-18T03:46:37.632Z</updated>
+  <updated>2020-03-08T16:02:28.529Z</updated>
   <id>http://blog.littlekang.xyz/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>固件加头部信息</title>
+    <link href="http://blog.littlekang.xyz/article/b3de8d7/"/>
+    <id>http://blog.littlekang.xyz/article/b3de8d7/</id>
+    <published>2020-03-06T16:13:52.000Z</published>
+    <updated>2020-03-08T16:02:28.529Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;参考格式&quot;&gt;&lt;a href=&quot;#参考格式&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://blog.littlekang.xyz/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="linux" scheme="http://blog.littlekang.xyz/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Openwrt软件包创建</title>
     <link href="http://blog.littlekang.xyz/article/a2e5f92e/"/>
     <id>http://blog.littlekang.xyz/article/a2e5f92e/</id>
     <published>2020-02-17T08:37:06.000Z</published>
-    <updated>2020-02-18T03:46:37.632Z</updated>
+    <updated>2020-02-23T14:32:30.861Z</updated>
     
     <summary type="html">
     
@@ -48,7 +74,7 @@
     <link href="http://blog.littlekang.xyz/article/32c0b2ae/"/>
     <id>http://blog.littlekang.xyz/article/32c0b2ae/</id>
     <published>2020-02-12T16:12:38.000Z</published>
-    <updated>2020-02-16T15:59:00.458Z</updated>
+    <updated>2020-02-12T16:57:27.576Z</updated>
     
     <summary type="html">
     
@@ -75,7 +101,7 @@
     <link href="http://blog.littlekang.xyz/article/339e02f9/"/>
     <id>http://blog.littlekang.xyz/article/339e02f9/</id>
     <published>2020-02-12T03:54:06.000Z</published>
-    <updated>2020-02-16T15:59:00.460Z</updated>
+    <updated>2020-02-12T13:05:11.529Z</updated>
     
     <summary type="html">
     
@@ -101,7 +127,7 @@
     <link href="http://blog.littlekang.xyz/article/d4a1185/"/>
     <id>http://blog.littlekang.xyz/article/d4a1185/</id>
     <published>2020-02-10T09:13:04.000Z</published>
-    <updated>2020-02-16T15:59:00.459Z</updated>
+    <updated>2020-02-12T13:05:11.527Z</updated>
     
     <summary type="html">
     

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>固件加头部信息</title>
+      <link href="/article/b3de8d7/"/>
+      <url>/article/b3de8d7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="参考格式"><a href="#参考格式" class="headerlink" title="参考格式"></a>参考格式</h1><p>固件的头部信息，可以是多种格式，一般可能更多的是二进制数据格式，考虑到后期方便扩展，这里选择使用json格式。</p><pre><code>ABCD{    &quot;magic&quot;:&quot;device_xx&quot;,    &quot;appVer&quot;:&quot;1.0.1&quot;,    &quot;hardVer&quot;:&quot;1.0.1&quot;,    &quot;format&quot;:&quot;elf&quot;,    &quot;size&quot;:1234,    &quot;md5&quot;:&quot;2d02e669731cbade6a64b58d602cf2a4&quot;}</code></pre><h1 id="JSON参数说明"><a href="#JSON参数说明" class="headerlink" title="JSON参数说明"></a>JSON参数说明</h1><p><strong>ABCD</strong> – json数据的长度，2字节，16进制字串格式，如 3456表示0x3456;</p><p><strong>magic</strong> – 魔数，表示固件的类型，以<code>设备类型_XX</code>表示，其中<code>XX</code>用于区别同一类型设备的不同版本；</p><p><strong>appVer</strong> – 固件版本号，设备根据版本号决定是否升级；</p><p><strong>hardVer</strong> – 支持的硬件(最低)版本，设备根据硬件版本信息，判断此固件是否适用，从而决定是否可以升级；</p><p><strong>format</strong> – 固件格式，主要有如下格式：</p><table><thead><tr><th>格式</th><th>说明</th></tr></thead><tbody><tr><td>elf</td><td>linux可执行文件格式，主要用于网关</td></tr><tr><td>ipk</td><td>openwrt固件安装包格式，用于网关</td></tr><tr><td>bin</td><td>二进制格式, 主要用于子设备</td></tr><tr><td>hex</td><td>hex文件格式，主要用于子设备</td></tr></tbody></table><p><strong>size</strong> – 固件大小(不包含固件头json信息)，int型，占4字节，单位byte；</p><p><strong>md5</strong> – 固件的MD5校验值, 32位字符串。</p><h1 id="生成带头部信息的固件包"><a href="#生成带头部信息的固件包" class="headerlink" title="生成带头部信息的固件包"></a>生成带头部信息的固件包</h1><h2 id="使用jq读取json格式配置文件"><a href="#使用jq读取json格式配置文件" class="headerlink" title="使用jq读取json格式配置文件"></a>使用jq读取json格式配置文件</h2><h3 id="jq简介"><a href="#jq简介" class="headerlink" title="jq简介"></a>jq简介</h3><p>jq 是一款命令行下处理 JSON 数据的工具。其可以接受标准输入，命令管道或者文件中的 JSON 数据，经过一系列的过滤器(filters)和表达式的转后形成我们需要的数据结构并将结果输出到标准输出中。jq 的这种特性使我们可以很容易地在 Shell 脚本中调用它。</p><p>需要说明的是 jq 只能接受 well form 的 JSON 字符串作为输入内容。也就是说输入内容必须严格遵循 JSON 格式的标准。所有的属性名必须是以双引号包括的字符串。对象的最后一个属性的末尾或者数组的最后一个元素的末尾不能有逗号。否则 jq 会抛出无法解析 JSON 的错误。</p><h3 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h3><blockquote><p><a href="https://www.ibm.com/developerworks/cn/linux/1612_chengg_jq/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/1612_chengg_jq/index.html</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Openwrt软件包创建</title>
       <link href="/article/a2e5f92e/"/>
       <url>/article/a2e5f92e/</url>
