@@ -434,7 +434,7 @@ ABCD{
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-07
+                    2020-03-09
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -448,14 +448,14 @@ ABCD{
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    561
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    10 分
                 </div>
                 
                 
@@ -510,11 +510,295 @@ ABCD{
 </tbody></table>
 <p><strong>size</strong> – 固件大小(不包含固件头json信息)，int型，占4字节，单位byte；</p>
 <p><strong>md5</strong> – 固件的MD5校验值, 32位字符串。</p>
-<h1 id="生成带头部信息的固件包"><a href="#生成带头部信息的固件包" class="headerlink" title="生成带头部信息的固件包"></a>生成带头部信息的固件包</h1><h2 id="使用jq读取json格式配置文件"><a href="#使用jq读取json格式配置文件" class="headerlink" title="使用jq读取json格式配置文件"></a>使用jq读取json格式配置文件</h2><h3 id="jq简介"><a href="#jq简介" class="headerlink" title="jq简介"></a>jq简介</h3><p>jq 是一款命令行下处理 JSON 数据的工具。其可以接受标准输入，命令管道或者文件中的 JSON 数据，经过一系列的过滤器(filters)和表达式的转后形成我们需要的数据结构并将结果输出到标准输出中。jq 的这种特性使我们可以很容易地在 Shell 脚本中调用它。</p>
+<h1 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h1><h2 id="jq-–-JSON命令行处理工具"><a href="#jq-–-JSON命令行处理工具" class="headerlink" title="jq – JSON命令行处理工具"></a>jq – JSON命令行处理工具</h2><h3 id="jq简介"><a href="#jq简介" class="headerlink" title="jq简介"></a>jq简介</h3><p>jq 是一款命令行下处理 JSON 数据的工具。其可以接受标准输入，命令管道或者文件中的 JSON 数据，经过一系列的过滤器(filters)和表达式的转后形成我们需要的数据结构并将结果输出到标准输出中。jq 的这种特性使我们可以很容易地在 Shell 脚本中调用它。</p>
 <p>需要说明的是 jq 只能接受 well form 的 JSON 字符串作为输入内容。也就是说输入内容必须严格遵循 JSON 格式的标准。所有的属性名必须是以双引号包括的字符串。对象的最后一个属性的末尾或者数组的最后一个元素的末尾不能有逗号。否则 jq 会抛出无法解析 JSON 的错误。</p>
+<h3 id="jq基本操作"><a href="#jq基本操作" class="headerlink" title="jq基本操作"></a>jq基本操作</h3><ul>
+<li><p>帮助</p>
+<pre class="line-numbers language-shell"><code class="language-shell">jq -h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200309090742.png" alt></p>
+</li>
+<li><p>格式化json</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># -c 删除漂亮的格式输出
+echo '{"url": "mozillazg.com"}' |jq -c .
+{"url":"mozillazg.com"}
+
+echo '{"url": "mozillazg.com"}' |jq .
+{
+  "url": "mozillazg.com"
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>获取某个key值<br><code>.key</code>, <code>.foo.bar</code>, <code>[&quot;key&quot;]</code></p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 如果key对应的值存在，则输出值
+echo '{"url": "mozillazg.com"}' |jq .url
+"mozillazg.com"
+echo '{"url": "mozillazg.com"}' | jq '.["url"]'
+"mozillazg.com"
+
+# 如果key对应的值不存在，则输出null
+echo '{"notfoo": true, "alsonotfoo": false}' | jq '.foo'
+null
+
+echo '{"notfoo": true, "alsonotfoo": false}' | jq .foo
+null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>数组操作<br><code>.[]</code></p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 取出所有元素
+echo '[{"name": "tom"}, {"name": "mozillazg"}]' |jq .[]
+{
+  "name": "tom"
+}
+{
+  "name": "mozillazg"
+}
+
+# 取出第1个元素，下标从0开始
+echo '[{"name": "tom"}, {"name": "mozillazg"}]' |jq .[0]
+{
+  "name": "tom"
+}
+
+#取出下标为 0 到 2(不包括2)之间的元素
+echo '[{"name": "tom"}, {"name": "mozillazg"}, {"name": "jim"}]' |jq .[0:2]
+[
+  {
+    "name": "tom"
+  },
+  {
+    "name": "mozillazg"
+  }
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>取出数组元素中的key的值</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '[{"name": "foo"},{"name": "bar"},{"name": "foobar"}]' |jq .[].name
+"foo"
+"bar"
+"foobar"
+
+# 使用管道
+echo '[{"name": "foo"},{"name": "bar"},{"name": "foobar"}]' |jq '.[]|.name'
+"foo"
+"bar"
+"foobar"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>将结果重新组成数组</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '[{"name": "foo"},{"name": "bar"},{"name": "foobar"}]' |jq [.[].name]
+[
+  "foo",
+  "bar",
+  "foobar"
+]
+
+# 使用map实现
+echo '[{"name": "foo"},{"name": "bar"},{"name": "foobar"}]' |jq 'map(.name)'
+[
+  "foo",
+  "bar",
+  "foobar"
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>处理文件</p>
+<p>使用<code>jq [选项] &lt;jq表达式&gt; [files]</code>形式；<br>使用<code>cat [files] | jq [选项] &lt;jq表达式&gt;</code></p>
+</li>
+</ul>
+<h3 id="jq高级操作"><a href="#jq高级操作" class="headerlink" title="jq高级操作"></a>jq高级操作</h3><ul>
+<li><p>管道</p>
+<ul>
+<li>支持管道线|，它如同linux命令中的管道线——把前面命令的输出当作是后面命令的输入。</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '{"url": "mozillazg.com", "name": "mozillazg"}' | jq '.|.url'
+"mozillazg.com"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>获取内容的长度(字符串，数组的长度)</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '{"url": "mozillazg.com", "name": "mozillazg"}' |jq '.url|length'
+13
+
+echo '["mozillazg.com", "mozillazg"]' |jq '.|length'
+2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>map<br><code>map(foo)</code>可以实现对数组的每一项进行操作，然后合并结果的功能:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '["mozillazg.com", "mozillazg"]' | jq 'map(length)'
+[
+  13,
+  9
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>filter(select)<br><code>select(foo)</code> 可以实现对输入项进行判断，只返回符合条件的项:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '["mozillazg.com", "mozillazg"]' | jq 'map(select(.|length > 9))'
+[
+  "mozillazg.com"
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>字符串插值，拼接<br>可以使用 <code>\(foo)</code> 实现字符串插值功能:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '{"url": "mozillazg.com", "name": "mozillazg"}' |jq '"hi \(.name)"'
+"hi mozillazg"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>注意要用双引号包围起来，表示是一个字符串。</p>
+</li>
+<li><p>if/elif/else<br>可以使用 <code>if .. then .. elif .. then .. else .. end</code> 实现条件判断:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo '[0, 1, 2, 3]' | jq 'map(if . == 0 then "zero" elif . == 1 then "one" elif . == 2 then "two" else "many" end)'
+[
+  "zero",
+  "one",
+  "two",
+  "many"
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>构造object或数组<br>可以通过 <code>{}</code> 和 <code>[]</code> 构造新的 object 或 数组：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># object
+echo '["mozillazg.com", "mozillazg"]' |jq '{name: .[1]}'
+{
+  "name": "mozillazg"
+}
+
+# array
+echo '{"url": "mozillazg.com", "name": "mozillazg"}' |jq '[.name, .url]'
+[
+  "mozillazg",
+  "mozillazg.com"
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="jq内置运算支持"><a href="#jq内置运算支持" class="headerlink" title="jq内置运算支持"></a>jq内置运算支持</h3><p>jq 内部支持的数据类型有：数字，字符串，数组和对象(object)。并且在这些数据类型的基础上, jq 提供了一些基本的操作符来实现一些基本的运算和数据操作。列举如下：</p>
+<ul>
+<li>数学运算。对于数字类型，jq 实现了基本的加减乘除(/)和求余(%)运算。对于除法运算，jq 最多支持 16 位小数。</li>
+<li>字符串操作。jq 提供字符串的连接操作(运算符为’+’，例如：”tom “+”jerry”结果为”tom jerry”)，字符串的复制操作(例如：’a’*3 结果为’aaa’)，以及字符串分割操作(将字符串按照指定的分割符分成数组，例如”sas”/“s”的结果为[“”,”a”,””]，而”sas”/“a”的结果为[“s”,”s”]。</li>
+<li>数组操作。jq 提供两种数组运算：并集(‘+’)运算，结果数组中包含参与运算的数组的所有元素。差集运算(‘-‘)，例如：有数组 a,b, a-b 的结果为所有在 a 中且不包含在 b 中的元素组成的数组。</li>
+<li>对象操作。jq 实现了两个 JSON 对象的合并操作(merge)。当两个参与运算的对象包含相同的属性时则保留运算符右侧对象的属性值。有两种合并运算符：’+’和’<em>‘。所不同的是，运算符’+’只做顶层属性的合并，运算符’</em>‘则是递归合并。例如：有对象 a={“a”:{“b”:1}}, b={“a”:{“c”:2}}，a+b 的结果为{“a”:{“c”:2}}，而 a*b 的结果为{“a”:{“b”:1,”c”:2}}</li>
+<li>比较操作：jq 内部支持的比较操作符有==, !=,&gt;,&gt;=,&lt;=和&lt;。其中，’==’的规则和 javascript 中的恒等(‘===’)类似，只有两个操作数的类型和值均相同时其结果才是 true。</li>
+<li>逻辑运算符: and/or/not。在 jq 逻辑运算中，除了 false 和 null 外，其余的任何值都等同于 true。</li>
+<li>默认操作符(‘//‘), 表达式’a//b’表示当表达式 a 的值不是 false 或 null 时，a//b 等于 a，否则等于 b。</li>
+</ul>
+<h3 id="jq修改json数据"><a href="#jq修改json数据" class="headerlink" title="jq修改json数据"></a>jq修改json数据</h3><p>原json内容：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200309142452.png" alt></p>
+<p>例如需要修改size的值为123，方式如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">#重定向到新的文件，注意不能是原文件
+cat firmware.json | jq 'to_entries |
+map(if .key == "size"
+then . + {"value":123}
+else .
+end
+) |
+from_entries' > new.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200309143222.png" alt></p>
 <h3 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h3><blockquote>
 <p><a href="https://www.ibm.com/developerworks/cn/linux/1612_chengg_jq/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/1612_chengg_jq/index.html</a></p>
+<p><a href="https://mozillazg.com/2018/01/jq-use-examples-cookbook.html#hidid4" target="_blank" rel="noopener">https://mozillazg.com/2018/01/jq-use-examples-cookbook.html#hidid4</a></p>
+<p><a href="https://github.com/meetbill/xbatch/wiki/jq#22-%E6%A0%B9%E6%8D%AE-key-%E6%9F%A5%E8%AF%A2-json-%E7%9A%84%E5%80%BC" target="_blank" rel="noopener">https://github.com/meetbill/xbatch/wiki/jq#22-%E6%A0%B9%E6%8D%AE-key-%E6%9F%A5%E8%AF%A2-json-%E7%9A%84%E5%80%BC</a></p>
+<p><a href="https://www.jianshu.com/p/f50c87b7eaea" target="_blank" rel="noopener">https://www.jianshu.com/p/f50c87b7eaea</a></p>
 </blockquote>
+<h2 id="shell获取文件的大小"><a href="#shell获取文件的大小" class="headerlink" title="shell获取文件的大小"></a>shell获取文件的大小</h2><pre class="line-numbers language-shell"><code class="language-shell">ls -l filename | awk '{print $5}'
+du -b filename | awk '{print $1}'
+wc -c filename | awk '{print $1}'
+wc -c < filename
+stat -c "%s" filename<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="shell计算文件的MD5"><a href="#shell计算文件的MD5" class="headerlink" title="shell计算文件的MD5"></a>shell计算文件的MD5</h2><p><strong>md5sum</strong>: </p>
+<p>显示或检查 MD5(32-bit) 校验和，若没有文件选项，或者文件处为”-“，则从标准输入读取。<br><strong>echo -n</strong> : 不打印换行符。<br><strong>cut</strong>: cut用来从标准输入或文本文件中剪切列或域。剪切文本可以将之粘贴到一个文本文件。<br>        -d 指定与空格和tab键不同的域分隔符。-f1 表示第一个域。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">md5sum iot_gateway
+5b5e4be07a7960ef1450f3e8c8b22df9  iot_gateway
+
+md5sum iot_gateway | cut -d ' ' -f1
+5b5e4be07a7960ef1450f3e8c8b22df9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="shell删除某个字符"><a href="#shell删除某个字符" class="headerlink" title="shell删除某个字符"></a>shell删除某个字符</h2><p>例如使用 <code>tr -d &#39;[ \t]</code> 删除换行字符</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo "    123  567   " | tr -d '[ \t]' #输出12345<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="使用shell添加头部信息"><a href="#使用shell添加头部信息" class="headerlink" title="使用shell添加头部信息"></a>使用shell添加头部信息</h1><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
+
+# 删除旧固件
+rm -rf ./iot_gateway*.elf
+rm -rf ./iot_gateway*.ipk
+
+# 生成的固件路径
+FIRMWARE_ELF_DIR= xxx
+FIRMWARE_IPK_DIR= xxx
+
+# 固件加头打包时间
+PACK_TIME=$(date "+%Y-%m-%d %H:%M:%S")
+
+echo "packtime: $PACK_TIME"
+
+# 拷贝固件至当前目录暂存
+cp $FIRMWARE_ELF_DIR/iot_gateway ./raw.elf
+cp $FIRMWARE_IPK_DIR/iot_gateway*.ipk ./raw.ipk
+
+echo "copy firmware done."
+
+# 获取固件的大小
+ELF_SIZE=$(ls -l ./raw.elf | awk '{print $5}')
+IPK_SIZE=$(ls -l ./raw.ipk | awk '{print $5}')
+
+echo "elf size: $ELF_SIZE"
+echo "ipk size: $IPK_SIZE"
+
+# 计算固件的MD5
+ELF_MD5=$(md5sum raw.elf | cut -d ' ' -f1)
+IPK_MD5=$(md5sum raw.ipk | cut -d ' ' -f1)
+
+echo "elf md5: $ELF_MD5"
+echo "ipk md5: $ELF_MD5"
+
+# 填充固件头信息到json
+cat firmware.json |
+    jq -c "to_entries |
+        map(if .key == \"size\"
+            then . + {\"value\":$ELF_SIZE}
+            elif .key == \"format\"
+            then . + {\"value\":\"elf\"}
+            elif .key == \"timestamp\"
+            then . + {\"value\":\"$PACK_TIME\"}
+            elif .key == \"md5\"
+            then . + {\"value\":\"$ELF_MD5\"}
+            else .
+            end
+           ) |
+        from_entries" | tr -d '\n' > elf.json
+
+cat firmware.json |
+    jq -c "to_entries |
+        map(if .key == \"size\"
+            then . + {\"value\":$IPK_SIZE}
+            elif .key == \"format\"
+            then . + {\"value\":\"ipk\"}
+            elif .key == \"timestamp\"
+            then . + {\"value\":\"$PACK_TIME\"}
+            elif .key == \"md5\"
+            then . + {\"value\":\"$IPK_MD5\"}
+            else .
+            end
+           ) |
+        from_entries" | tr -d '\n' > ipk.json
+
+#Debug: printf json信息
+echo "elf.json:"
+cat ./elf.json | jq .
+
+echo "ipk.json:"
+cat ./ipk.json | jq .
+
+# 获取软件版本
+ELF_APP_VER=$(cat ./elf.json | jq --raw-output '.appVer')        
+IPK_APP_VER=$(cat ./ipk.json | jq --raw-output '.appVer')
+
+echo "elf app version: $ELF_APP_VER"
+echo "ipk app version: $IPK_APP_VER"
+
+# 计算json的长度,16进制字符串格式
+ELF_JSON_LEN=$(ls -l ./elf.json | awk '{printf "%04x\n",$5}')
+IPK_JSON_LEN=$(ls -l ./ipk.json | awk '{printf "%04x\n",$5}')
+
+echo "elf json len: $ELF_JSON_LEN"
+echo "ipk json len: $IPK_JSON_LEN"
+
+# 保存到文件
+echo -n "$ELF_JSON_LEN" >elf.len
+echo -n "$IPK_JSON_LEN" >ipk.len
+
+
+# 合并文件
+cat elf.len elf.json raw.elf >iot_gateway_$ELF_APP_VER.elf
+cat ipk.len ipk.json raw.ipk >iot_gateway_$ELF_APP_VER.ipk
+
+echo "Generate Pakage Done."
+
+# 删除生成的临时文件
+rm -rf elf.json ipk.json raw.elf raw.ipk elf.len ipk.len        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr />
@@ -638,7 +922,7 @@ ABCD{
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-09
                             </span>
                         <span class="publish-author">
                             
@@ -871,7 +1155,7 @@ Makefile(必选)
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">4.3k</span>
+            <span class="white-color">6.1k</span>
             
 
             <br>
