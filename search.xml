@@ -20,7 +20,11 @@
       
         <tags>
             
-            <tag> http, upgrade, 嵌入式 </tag>
+            <tag> http </tag>
+            
+            <tag> upgrade </tag>
+            
+            <tag> 嵌入式 </tag>
             
         </tags>
       
