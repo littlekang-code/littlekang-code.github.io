@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.littlekang.xyz/"/>
-  <updated>2020-03-11T08:09:20.463Z</updated>
+  <updated>2020-03-12T01:46:07.828Z</updated>
   <id>http://blog.littlekang.xyz/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>嵌入式固件升级_tomcat搭建http服务</title>
+    <link href="http://blog.littlekang.xyz/article/2dce40ee/"/>
+    <id>http://blog.littlekang.xyz/article/2dce40ee/</id>
+    <published>2020-03-12T01:42:15.000Z</published>
+    <updated>2020-03-12T01:46:07.828Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;修改登陆用户名密码&quot;&gt;&lt;a href=&quot;#修改登陆用户名密码&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://blog.littlekang.xyz/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="http, upgrade, 嵌入式" scheme="http://blog.littlekang.xyz/tags/http-upgrade-%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用kermit通过串口升级openwrt uboot</title>
     <link href="http://blog.littlekang.xyz/article/57e8f993/"/>
     <id>http://blog.littlekang.xyz/article/57e8f993/</id>
     <published>2020-03-11T07:36:04.000Z</published>
-    <updated>2020-03-11T08:09:20.463Z</updated>
+    <updated>2020-03-11T08:10:57.995Z</updated>
     
     <summary type="html">
     

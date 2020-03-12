@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.littlekang.xyz/article/2dce40ee/</loc>
+    
+    <lastmod>2020-03-12T01:46:07.828Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.littlekang.xyz/article/57e8f993/</loc>
     
-    <lastmod>2020-03-11T08:09:20.463Z</lastmod>
+    <lastmod>2020-03-11T08:10:57.995Z</lastmod>
     
   </url>
   
@@ -30,14 +37,14 @@
   </url>
   
   <url>
-    <loc>http://blog.littlekang.xyz/contact/index.html</loc>
+    <loc>http://blog.littlekang.xyz/friends/index.html</loc>
     
     <lastmod>2020-02-16T15:59:00.465Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.littlekang.xyz/friends/index.html</loc>
+    <loc>http://blog.littlekang.xyz/contact/index.html</loc>
     
     <lastmod>2020-02-16T15:59:00.465Z</lastmod>
     

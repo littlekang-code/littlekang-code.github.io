@@ -4,18 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hello world, 行走的康康">
+    <meta name="keywords" content="嵌入式固件升级_tomcat搭建http服务, 行走的康康">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="说明这是一个测试。
-代码块int main(void)
-{
-    printf(&#34;hello world !\r\n&#34;);
-    return 0;
-}
-引用
-https://github.com/blinkfox/hexo-theme">
+    <meta name="description" content="修改登陆用户名密码首先进入tomcat文件夹的conf文件夹，首先复制一份tomcat-users.xml作为备份然后修改这个配置文件，用记事本打开，找到
+&amp;lt;!--
+&amp;lt;role rolename=&amp;quot;tomcat&amp;quo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +18,7 @@ https://github.com/blinkfox/hexo-theme">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hello world | 行走的康康</title>
+    <title>嵌入式固件升级_tomcat搭建http服务 | 行走的康康</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -297,13 +292,13 @@ https://github.com/blinkfox/hexo-theme">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hello world
+                        嵌入式固件升级_tomcat搭建http服务
                     </div>
                 </div>
             </div>
@@ -414,8 +409,8 @@ https://github.com/blinkfox/hexo-theme">
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/test/" target="_blank">
-                            <span class="chip bg-color">test</span>
+                        <a href="/tags/http-upgrade-嵌入式/" target="_blank">
+                            <span class="chip bg-color">http, upgrade, 嵌入式</span>
                         </a>
                         
                     </div>
@@ -426,8 +421,8 @@ https://github.com/blinkfox/hexo-theme">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/测试/" class="post-category" target="_blank">
-                            测试
+                        <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                            学习笔记
                         </a>
                         
                     </div>
@@ -438,7 +433,7 @@ https://github.com/blinkfox/hexo-theme">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-10
+                    2020-03-12
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -452,7 +447,7 @@ https://github.com/blinkfox/hexo-theme">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    34
+                    406
                 </div>
                 
 
@@ -475,14 +470,59 @@ https://github.com/blinkfox/hexo-theme">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这是一个测试。<br><img src="https://s2.ax1x.com/2020/02/10/15r7oF.png" alt="15r7oF.png"></p>
-<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello world !\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><blockquote>
-<p><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md</a></p>
+                <h1 id="修改登陆用户名密码"><a href="#修改登陆用户名密码" class="headerlink" title="修改登陆用户名密码"></a>修改登陆用户名密码</h1><p>首先进入tomcat文件夹的conf文件夹，首先复制一份tomcat-users.xml作为备份<br>然后修改这个配置文件，用记事本打开，找到</p>
+<pre><code>&lt;!--
+&lt;role rolename=&quot;tomcat&quot;/&gt;
+&lt;role rolename=&quot;role1&quot;/&gt;
+&lt;user username=&quot;tomcat&quot; password=&quot;&lt;must-be-changed&gt;&quot; roles=&quot;tomcat&quot;/&gt;
+&lt;user username=&quot;both&quot; password=&quot;&lt;must-be-changed&gt;&quot; roles=&quot;tomcat,role1&quot;/&gt;
+&lt;user username=&quot;role1&quot; password=&quot;&lt;must-be-changed&gt;&quot; roles=&quot;role1&quot;/&gt;
+--&gt;</code></pre><p>去掉开头和结尾的<code>&lt;!-- --&gt;</code>然后修改为</p>
+<pre><code>&lt;role rolename=&quot;manager-gui&quot;/&gt;
+&lt;role rolename=&quot;admin-gui&quot;/&gt;
+&lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;manager-gui,admin-gui&quot;/&gt;</code></pre><p>其中如果你只添加manager-gui可以进去sever status和manager app，添加了admin-gui以后才能进去host-manager，然后重启tomcat<br>账号密码为：tomcat<br>如果cmd窗口一闪而过你又想知道是哪儿报错了，请用cmd进入tomcat/bin文件夹然后用debug模式启动———catalina debug,一般是端口被占用，比如被你eclipse已经调用了tomcat</p>
+<h1 id="tomcat-server-xml配置说明"><a href="#tomcat-server-xml配置说明" class="headerlink" title="tomcat server.xml配置说明"></a>tomcat server.xml配置说明</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312091604.png" alt></p>
+<ul>
+<li><p>server.xml描述了如何启动Tomcat Server</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Server</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Listener</span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>GlobaNamingResources</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>GlobaNamingResources</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Service</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Engine</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Logger</span> <span class="token punctuation">/></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Realm</span> <span class="token punctuation">/></span></span>
+             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>host</span><span class="token punctuation">></span></span>
+                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Logger</span> <span class="token punctuation">/></span></span>
+                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Context</span> <span class="token punctuation">/></span></span>
+             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>host</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Engine</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Service</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Server</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>参数说明：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312092234.png" alt></p>
+</li>
+</ul>
+<h1 id="修改配置，增加固件文件夹"><a href="#修改配置，增加固件文件夹" class="headerlink" title="修改配置，增加固件文件夹"></a>修改配置，增加固件文件夹</h1><ul>
+<li><p>新建固件文件夹fw<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312094524.png" alt></p>
+</li>
+<li><p>修改server.xml，使fw可以被访问<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312093806.png" alt></p>
+</li>
+<li><p>新增index.xml，helloworld</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello world~~<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/8120008.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/8120008.html</a><br><a href="https://blog.csdn.net/zcyhappy1314/article/details/10356909" target="_blank" rel="noopener">https://blog.csdn.net/zcyhappy1314/article/details/10356909</a></p>
 </blockquote>
 
             </div>
@@ -518,9 +558,9 @@ https://github.com/blinkfox/hexo-theme">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《hello world》
+                    《嵌入式固件升级_tomcat搭建http服务》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/d4a1185/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/2dce40ee/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Kang
             </a> 采用
@@ -561,7 +601,7 @@ https://github.com/blinkfox/hexo-theme">
         repo: 'littlekang-code.github.io',
         owner: 'littlekang-code',
         admin: "littlekang-code",
-        id: 'article/d4a1185/',
+        id: 'article/2dce40ee/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -582,92 +622,38 @@ https://github.com/blinkfox/hexo-theme">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/339e02f9/">
+                <a href="/article/2dce40ee/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="hexo cmd">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="嵌入式固件升级_tomcat搭建http服务">
                         
-                        <span class="card-title">hexo cmd</span>
+                        <span class="card-title">嵌入式固件升级_tomcat搭建http服务</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            新建网站hexo init [folder]新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。
-新建文章hexo new [layout] &lt;title&gt;新建一篇文章。如果没有设置 layout 
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/测试/" class="post-category" target="_blank">
-                                    测试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/test/" target="_blank">
-                        <span class="chip bg-color">test</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/article/d4a1185/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="hello world">
-                        
-                        <span class="card-title">hello world</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            说明这是一个测试。
-代码块int main(void)
-{
-    printf("hello world !\r\n");
-    return 0;
-}
-引用
-https://github.com/blinkfox/hexo-theme
+                            修改登陆用户名密码首先进入tomcat文件夹的conf文件夹，首先复制一份tomcat-users.xml作为备份然后修改这个配置文件，用记事本打开，找到
+&lt;!--
+&lt;role rolename=&quot;tomcat&quo
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-10
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/测试/" class="post-category" target="_blank">
-                                    测试
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
                                 </a>
                             
                             
@@ -678,8 +664,60 @@ https://github.com/blinkfox/hexo-theme
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/test/" target="_blank">
-                        <span class="chip bg-color">test</span>
+                    <a href="/tags/http-upgrade-嵌入式/" target="_blank">
+                        <span class="chip bg-color">http, upgrade, 嵌入式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/57e8f993/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="使用kermit通过串口升级openwrt uboot">
+                        
+                        <span class="card-title">使用kermit通过串口升级openwrt uboot</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            缘由因为购买的MT7688模块自带uboot，tftp升级固件功能无法使用，tftp一直显示错误，无法升级文件系统；
+好在还可以通过串口升级uboot.
+
+在板子启动的时候，输入“7”来选择通过串口升级uboot，然后看到下面的输出：Rea
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/openwrt/" target="_blank">
+                        <span class="chip bg-color">openwrt</span>
                     </a>
                     
                 </div>
