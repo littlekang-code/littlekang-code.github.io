@@ -524,7 +524,7 @@
 <h1 id="为什么要用SQLite"><a href="#为什么要用SQLite" class="headerlink" title="为什么要用SQLite"></a>为什么要用SQLite</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323094401.png" alt></p>
 <h1 id="SQLite架构"><a href="#SQLite架构" class="headerlink" title="SQLite架构"></a>SQLite架构</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409000554.png" alt></p>
 <h1 id="SQLite安装"><a href="#SQLite安装" class="headerlink" title="SQLite安装"></a>SQLite安装</h1><p>目前，几乎所有版本的 Linux 操作系统都附带 SQLite。所以，只要使用下面的命令来检查您的机器上是否已经安装了 SQLite。</p>
-<pre class="line-numbers language-shell"><code class="language-shell">sqlite3 
+<pre class="line-numbers language-shell"><code class="language-shell">sqlite3
 SQLite version 3.7.15.2  2013-01-09  11:53:05  Enter  ".help"  for instructions Enter SQL statements terminated with a ";"
 sqlite<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>如果没有看到上面的结果，那么就意味着没有在 Linux 机器上安装 SQLite。</p>
@@ -534,7 +534,7 @@ sqlite<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 </blockquote>
 <h2 id="Linux下通过源码安装"><a href="#Linux下通过源码安装" class="headerlink" title="Linux下通过源码安装"></a>Linux下通过源码安装</h2><pre class="line-numbers language-shell"><code class="language-shell">tar xvzf sqlite-autoconf-3310100.tar.gz
 cd sqlite-autoconf-3310100
-./configure --prefix=/usr/local 
+./configure --prefix=/usr/local
 make
 make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Windows下安装"><a href="#Windows下安装" class="headerlink" title="Windows下安装"></a>Windows下安装</h2><p>下载：<br><a href="https://www.sqlite.org/2020/sqlite-dll-win64-x64-3310100.zip" target="_blank" rel="noopener">sqlite-dll-win64-x64-3310100.zip</a><br><a href="https://www.sqlite.org/2020/sqlite-tools-win32-x86-3310100.zip" target="_blank" rel="noopener">sqlite-tools-win32-x86-3310100.zip</a></p>
@@ -560,25 +560,27 @@ make install<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 #开启/关闭头部信息
 .header ON | OFF
 
-# 显示各种设置的当前值
+#显示各种设置的当前值
 .show
 
-# 设置输出模式
+#设置输出模式
 .mode MODE
-    #MODE可以是: 
-    # csv 逗号分隔符
-    # column 左对齐的列
-    # html，html的<table>代码
-    # intert，TABLE表的SQL插入语句
-    # line, 每行一个
-    # list, 由 .separator 字符串分隔的值
-    # table, 由 Tab 分隔的值
-    # tcl, TCL列<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+#MODE可以是:
+   #csv 逗号分隔符
+   #column 左对齐的列
+   #html，html的<table>代码
+   #intert，TABLE表的SQL插入语句
+   #line, 每行一个
+   #list, 由 .separator 字符串分隔的值
+   #table, 由 Tab 分隔的值
+   #tcl, TCL列
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="SQLite语法"><a href="#SQLite语法" class="headerlink" title="SQLite语法"></a>SQLite语法</h1><h2 id="大小写敏感性"><a href="#大小写敏感性" class="headerlink" title="大小写敏感性"></a>大小写敏感性</h2><p>有个重要的点值得注意，SQLite 是<strong>不区分大小写</strong>的，但也有一些命令是大小写敏感的，比如 <strong>GLOB</strong> 和 <strong>glob</strong> 在 SQLite 的语句中有不同的含义。</p>
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>SQLite 注释是附加的注释，可以在 SQLite 代码中添加注释以增加其可读性，他们可以出现在任何空白处，包括在表达式内和其他 SQL 语句的中间，但它们不能嵌套。</p>
 <p>SQL 注释以两个连续的 “-“ 字符（ASCII 0x2d）开始，并扩展至下一个换行符（ASCII 0x0a）或直到输入结束，以先到者为准</p>
 <p>您也可以使用 C 风格的注释，以 “/<em>“ 开始，并扩展至下一个 “</em>/“ 字符对或直到输入结束，以先到者为准。SQLite的注释可以跨越多行。</p>
-<pre><code>sqlite&gt;.help --  这是一个简单的注释</code></pre><h1 id="SQLite-存储类"><a href="#SQLite-存储类" class="headerlink" title="SQLite 存储类"></a>SQLite 存储类</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323163449.png" alt></p>
+<p><code>sqlite&gt;.help --  这是一个简单的注释</code></p>
+<h1 id="SQLite-存储类"><a href="#SQLite-存储类" class="headerlink" title="SQLite 存储类"></a>SQLite 存储类</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323163449.png" alt></p>
 <h1 id="SQLite常用命令行操作"><a href="#SQLite常用命令行操作" class="headerlink" title="SQLite常用命令行操作"></a>SQLite常用命令行操作</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><pre class="line-numbers language-shell"><code class="language-shell">#创建
 sqlite3 test.db
 
@@ -646,29 +648,19 @@ sqlite> .width 10,20,20<span aria-hidden="true" class="line-numbers-rows"><span>
 <h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323192958.png" alt></p>
 <h1 id="SQLite子句"><a href="#SQLite子句" class="headerlink" title="SQLite子句"></a>SQLite子句</h1><h2 id="SQLite-Where子句"><a href="#SQLite-Where子句" class="headerlink" title="SQLite Where子句"></a>SQLite Where子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200324105704.png" alt></p>
 <h2 id="SQLite-Update子句"><a href="#SQLite-Update子句" class="headerlink" title="SQLite Update子句"></a>SQLite Update子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200324105838.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200324110300.png" alt></p>
-<h2 id="SQLite-Like子句"><a href="#SQLite-Like子句" class="headerlink" title="SQLite Like子句"></a>SQLite Like子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231408.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231423.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231439.png" alt></p>
+<h2 id="SQLite-Like子句"><a href="#SQLite-Like子句" class="headerlink" title="SQLite Like子句"></a>SQLite Like子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231408.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231423.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231439.png" alt></p>
 <p>不区分大小写:<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231459.png" alt></p>
-<h2 id="SQLite-Glob子句"><a href="#SQLite-Glob子句" class="headerlink" title="SQLite Glob子句"></a>SQLite Glob子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231521.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231539.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231553.png" alt></p>
+<h2 id="SQLite-Glob子句"><a href="#SQLite-Glob子句" class="headerlink" title="SQLite Glob子句"></a>SQLite Glob子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231521.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231539.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231553.png" alt></p>
 <p>区分大小写：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231614.png" alt></p>
-<h2 id="SQLite-Limit子句"><a href="#SQLite-Limit子句" class="headerlink" title="SQLite Limit子句"></a>SQLite Limit子句</h2><p>SQLite 的 <strong>LIMIT</strong> 子句用于限制由 SELECT 语句返回的数据数量。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235214.png" alt><br>offset 指定开头要跳过多少行，如offset为3，则跳过1~3行；<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235230.png" alt></p>
-<h2 id="SQLite-Order-By子句"><a href="#SQLite-Order-By子句" class="headerlink" title="SQLite Order By子句"></a>SQLite Order By子句</h2><p>SQLite 的 <strong>ORDER BY</strong> 子句是用来基于一个或多个列按升序或降序顺序排列数据。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235240.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235251.png" alt></p>
-<h2 id="SQLite-Having子句"><a href="#SQLite-Having子句" class="headerlink" title="SQLite Having子句"></a>SQLite Having子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235313.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002140.png" alt></p>
+<h2 id="SQLite-Limit子句"><a href="#SQLite-Limit子句" class="headerlink" title="SQLite Limit子句"></a>SQLite Limit子句</h2><p>SQLite 的 <strong>LIMIT</strong> 子句用于限制由 SELECT 语句返回的数据数量。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235214.png" alt></p>
+<p>offset 指定开头要跳过多少行，如offset为3，则跳过1~3行；<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235230.png" alt></p>
+<h2 id="SQLite-Order-By子句"><a href="#SQLite-Order-By子句" class="headerlink" title="SQLite Order By子句"></a>SQLite Order By子句</h2><p>SQLite 的 <strong>ORDER BY</strong> 子句是用来基于一个或多个列按升序或降序顺序排列数据。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235240.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235251.png" alt></p>
+<h2 id="SQLite-Having子句"><a href="#SQLite-Having子句" class="headerlink" title="SQLite Having子句"></a>SQLite Having子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235313.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002140.png" alt></p>
 <h1 id="SQLite-Distinct关键字"><a href="#SQLite-Distinct关键字" class="headerlink" title="SQLite Distinct关键字"></a>SQLite Distinct关键字</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002201.png" alt></p>
-<h1 id="SQLite约束"><a href="#SQLite约束" class="headerlink" title="SQLite约束"></a>SQLite约束</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002535.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002557.png" alt></p>
+<h1 id="SQLite约束"><a href="#SQLite约束" class="headerlink" title="SQLite约束"></a>SQLite约束</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002535.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002557.png" alt></p>
 <h1 id="SQLite-NULL-值"><a href="#SQLite-NULL-值" class="headerlink" title="SQLite NULL 值"></a>SQLite NULL 值</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002619.png" alt></p>
-<h1 id="SQLite-Trigger-触发器"><a href="#SQLite-Trigger-触发器" class="headerlink" title="SQLite Trigger(触发器)"></a>SQLite Trigger(触发器)</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002711.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002959.png" alt></p>
-<ul>
-<li>实例<br>让我们假设一个情况，我们要为被插入到新创建的 COMPANY 表（如果已经存在，则删除重新创建）中的每一个记录保持审计试验；<br>为了保持审计试验，我们将创建一个名为 AUDIT 的新表。每当 COMPANY 表中有一个新的记录项时，日志消息将被插入其中；<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409000937.png" alt><br>往company表中添加新记录：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001004.png" alt></li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001043.png" alt></p>
+<h1 id="SQLite-Trigger-触发器"><a href="#SQLite-Trigger-触发器" class="headerlink" title="SQLite Trigger(触发器)"></a>SQLite Trigger(触发器)</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002711.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002959.png" alt></p>
+<p><strong>实例</strong><br>让我们假设一个情况，我们要为被插入到新创建的 COMPANY 表（如果已经存在，则删除重新创建）中的每一个记录保持审计试验；<br>为了保持审计试验，我们将创建一个名为 AUDIT 的新表。每当 COMPANY 表中有一个新的记录项时，日志消息将被插入其中；<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409000937.png" alt><br>往company表中添加新记录：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001004.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001043.png" alt></p>
 <h1 id="SQLite-索引（Index）"><a href="#SQLite-索引（Index）" class="headerlink" title="SQLite 索引（Index）"></a>SQLite 索引（Index）</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001341.png" alt></p>
 <ul>
 <li><p>创建索引<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094056.png" alt></p>
@@ -867,7 +859,7 @@ gcc -o test_open test_open.c -l sqlite3<span aria-hidden="true" class="line-numb
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="实例：UPDATE操作"><a href="#实例：UPDATE操作" class="headerlink" title="实例：UPDATE操作"></a>实例：UPDATE操作</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span></span>
 
 <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> <span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>azColName<span class="token punctuation">)</span><span class="token punctuation">{</span>
    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
@@ -913,7 +905,7 @@ gcc -o test_open test_open.c -l sqlite3<span aria-hidden="true" class="line-numb
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="实例：Delete"><a href="#实例：Delete" class="headerlink" title="实例：Delete"></a>实例：Delete</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span></span>
 
 <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> <span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>azColName<span class="token punctuation">)</span><span class="token punctuation">{</span>
    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
@@ -957,13 +949,11 @@ gcc -o test_open test_open.c -l sqlite3<span aria-hidden="true" class="line-numb
    <span class="token function">sqlite3_close</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="SQLite线程安全和并发"><a href="#SQLite线程安全和并发" class="headerlink" title="SQLite线程安全和并发"></a>SQLite线程安全和并发</h1><h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095351.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095409.png" alt></p>
+<h1 id="SQLite线程安全和并发"><a href="#SQLite线程安全和并发" class="headerlink" title="SQLite线程安全和并发"></a>SQLite线程安全和并发</h1><h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095351.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095409.png" alt></p>
 <blockquote>
 <p><a href="https://jin-yang.github.io/post/sqlite-introduce.html" target="_blank" rel="noopener">https://jin-yang.github.io/post/sqlite-introduce.html</a></p>
 </blockquote>
-<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095421.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095442.png" alt></p>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095421.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095442.png" alt></p>
 <h1 id="Rollback-journal-和-WAL"><a href="#Rollback-journal-和-WAL" class="headerlink" title="Rollback journal 和 WAL"></a>Rollback journal 和 WAL</h1><ul>
 <li><p>Rollback journal<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095455.png" alt></p>
 </li>
@@ -977,22 +967,7 @@ gcc -o test_open test_open.c -l sqlite3<span aria-hidden="true" class="line-numb
 </li>
 </ul>
 <h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
-<p><a href="http://zetcode.com/db/sqlitec/" target="_blank" rel="noopener">SQLite C tutorial</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="noopener">SQLite教程</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/29234064" target="_blank" rel="noopener">图解 SQL 里的各种 JOIN</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://github.com/xiangwangfeng/xiangwangfeng.github.io/wiki/SQLite-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E5%B9%B6%E5%8F%91" target="_blank" rel="noopener">SQLite 线程安全和并发</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://xiaozhuanlan.com/topic/1754328960" target="_blank" rel="noopener">SQLite WAL 模式简单介绍</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://wordpress.semnaitik.com/sqlite-error-database-is-locked-code-5/" target="_blank" rel="noopener">SQLite Error Database is Locked- How to resolve?</a></p>
+<p><a href="http://zetcode.com/db/sqlitec/" target="_blank" rel="noopener">SQLite C tutorial</a><br><a href="https://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="noopener">SQLite教程</a><br><a href="https://zhuanlan.zhihu.com/p/29234064" target="_blank" rel="noopener">图解 SQL 里的各种 JOIN</a><br><a href="https://github.com/xiangwangfeng/xiangwangfeng.github.io/wiki/SQLite-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E5%B9%B6%E5%8F%91" target="_blank" rel="noopener">SQLite 线程安全和并发</a><br><a href="https://xiaozhuanlan.com/topic/1754328960" target="_blank" rel="noopener">SQLite WAL 模式简单介绍</a><br><a href="https://wordpress.semnaitik.com/sqlite-error-database-is-locked-code-5/" target="_blank" rel="noopener">SQLite Error Database is Locked- How to resolve?</a></p>
 </blockquote>
 
             </div>
