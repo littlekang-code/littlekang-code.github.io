@@ -1,0 +1,1506 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQLite学习笔记, 行走的康康">
+    <meta name="baidu-site-verification" content>
+    <meta name="google-site-verification" content>
+    <meta name="360-site-verification" content>
+    <meta name="description" content="数据库基础概念数据库的模型
+层次模型
+网状模型
+关系模型
+面向对象模型
+半结构化模型
+
+由于关系模型在很长一段时间内成为主流的数据模型，所以我们也习惯性将数据库类型分为两类，关系型数据库和非关系型数据库。
+关系型数据库这是我们目前至今主流的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SQLite学习笔记 | 行走的康康</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">行走的康康</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">行走的康康</div>
+        <div class="logo-desc">
+            
+            码农，户外，业余摄影
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/littlekang-code" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/littlekang-code" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SQLite学习笔记
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                        <a href="/tags/SQLite/" target="_blank">
+                            <span class="chip bg-color">SQLite</span>
+                        </a>
+                        
+                        <a href="/tags/数据库/" target="_blank">
+                            <span class="chip bg-color">数据库</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                            学习笔记
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-10
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    Kang
+                    
+                </div>
+
+                
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    15 分
+                </div>
+                
+                
+
+                
+                <div id="busuanzi_container_page_pv" class="info-break-policy">
+                    <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                    <span id="busuanzi_value_page_pv"></span>
+                </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="数据库基础概念"><a href="#数据库基础概念" class="headerlink" title="数据库基础概念"></a>数据库基础概念</h1><h2 id="数据库的模型"><a href="#数据库的模型" class="headerlink" title="数据库的模型"></a>数据库的模型</h2><ul>
+<li>层次模型</li>
+<li>网状模型</li>
+<li>关系模型</li>
+<li>面向对象模型</li>
+<li>半结构化模型</li>
+</ul>
+<p>由于关系模型在很长一段时间内成为主流的数据模型，所以我们也习惯性将数据库类型分为两类，<strong>关系型数据库和非关系型数据库</strong>。</p>
+<h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><p>这是我们目前至今主流的数据库类型，其对应的数据存储模型就是关系型模型，数据以表格形式存储，字段关联数据。</p>
+<p><strong>二维表结构是非常贴近逻辑世界的一个概念，它更容易理解，这是关系型数据库能够成为主流的其中一个重要原因。</strong>通过 SQL 进行表与表之间的联接查询非常的方便自然。</p>
+<p>缺点也是很显而易见的，海量数据下，对一张表的查询会显得很力不从心，就是因为数据的存储不具备特殊的数据结构，例如有些非关系型数据库的数据存储结构是类似树的结构，就使得查询上具有天然的优势。</p>
+<p>所以个人认为，虽然现在是关系型数据库的天下，但相信以后会出现一些优秀的非关系型数据库取代传统的关系型数据库。因为以后必然是大数据的时代，那么海量数据下，传统的关系型数据的效率问题就会被逐渐放大。</p>
+<h2 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h2><p><strong>索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可快速访问数据库表中的特定信息。</strong></p>
+<p>索引分为：聚集索引、非聚集索引、唯一索引等。<br>一张表可以有多个唯一索引和非聚集索引，但最多只能有一个聚集索引。 - 索引可以包含多列。<br>合理的创建索引能够提升查询语句的执行效率，但降低了新增、删除操作的速度，同时也会消耗一定的数据库物理空间。</p>
+<h2 id="在关系型数据库中如何描述多对多的关系"><a href="#在关系型数据库中如何描述多对多的关系" class="headerlink" title="在关系型数据库中如何描述多对多的关系"></a>在关系型数据库中如何描述多对多的关系</h2><p><strong>系型数据库中描述多对多的关系,需要建立第三张数据表。</strong><br>比如学生选课,需要在学生信息表和课程信息表的基础上,再建立选课信息表,该表中存放学生Id和课程Id。</p>
+<h2 id="什么是内联接、左外联接、右外联接"><a href="#什么是内联接、左外联接、右外联接" class="headerlink" title="什么是内联接、左外联接、右外联接"></a>什么是内联接、左外联接、右外联接</h2><ul>
+<li><strong>(Inner Join）</strong>：匹配2张表中相关联的记录。</li>
+<li><strong>(Left Outer Join）</strong>：除了匹配2张表中相关联的记录外，还会匹配左表中剩余的记录，右表中未匹配到的字段用NULL表示。</li>
+<li><strong>(Right Outer Join）</strong>：除了匹配2张表中相关联的记录外，还会匹配右表中剩余的记录，左表中未匹配到的字段用NULL表示。在判定左表和右表时，要根据表名出现在Outer Join的左右位置关系。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230828.png" alt></p>
+<ul>
+<li><p><strong>实例讲解</strong></p>
+<ul>
+<li><p>约定<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230852.png" alt></p>
+</li>
+<li><p><strong>INNER JOIN 内联查询</strong><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230916.png" alt><br>示例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230934.png" alt></p>
+</li>
+<li><p><strong>LIFT JOIN 左连接查询</strong><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230957.png" alt><br>示例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231014.png" alt></p>
+</li>
+<li><p><strong>RIGHT JOIN 右连接查询</strong><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231041.png" alt><br>示例：(sqlite 不支持right join &amp; full join)<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231105.png" alt></p>
+</li>
+<li><p><em><em>CROSS JOIN </em></em><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231129.png" alt><br>示例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231153.png" alt></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/29234064" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29234064</a></p>
+</blockquote>
+<h2 id="sql语句中join-on和where用法的区别和联系"><a href="#sql语句中join-on和where用法的区别和联系" class="headerlink" title="sql语句中join on和where用法的区别和联系"></a>sql语句中join on和where用法的区别和联系</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231215.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231243.png" alt></p>
+<blockquote>
+<p><a href="https://my.oschina.net/jun24bryant/blog/787375" target="_blank" rel="noopener">https://my.oschina.net/jun24bryant/blog/787375</a></p>
+</blockquote>
+<h1 id="SQLite简介"><a href="#SQLite简介" class="headerlink" title="SQLite简介"></a>SQLite简介</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323094302.png" alt></p>
+<h1 id="为什么要用SQLite"><a href="#为什么要用SQLite" class="headerlink" title="为什么要用SQLite"></a>为什么要用SQLite</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323094401.png" alt></p>
+<h1 id="SQLite架构"><a href="#SQLite架构" class="headerlink" title="SQLite架构"></a>SQLite架构</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409000554.png" alt></p>
+<h1 id="SQLite安装"><a href="#SQLite安装" class="headerlink" title="SQLite安装"></a>SQLite安装</h1><p>目前，几乎所有版本的 Linux 操作系统都附带 SQLite。所以，只要使用下面的命令来检查您的机器上是否已经安装了 SQLite。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">sqlite3 
+SQLite version 3.7.15.2  2013-01-09  11:53:05  Enter  ".help"  for instructions Enter SQL statements terminated with a ";"
+sqlite<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如果没有看到上面的结果，那么就意味着没有在 Linux 机器上安装 SQLite。</p>
+<h2 id="SQLite下载地址"><a href="#SQLite下载地址" class="headerlink" title="SQLite下载地址"></a>SQLite下载地址</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323094705.png" alt></p>
+<blockquote>
+<p><a href="http://www.sqlite.org/download.html" target="_blank" rel="noopener">http://www.sqlite.org/download.html</a></p>
+</blockquote>
+<h2 id="Linux下通过源码安装"><a href="#Linux下通过源码安装" class="headerlink" title="Linux下通过源码安装"></a>Linux下通过源码安装</h2><pre class="line-numbers language-shell"><code class="language-shell">tar xvzf sqlite-autoconf-3310100.tar.gz
+cd sqlite-autoconf-3310100
+./configure --prefix=/usr/local 
+make
+make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Windows下安装"><a href="#Windows下安装" class="headerlink" title="Windows下安装"></a>Windows下安装</h2><p>下载：<br><a href="https://www.sqlite.org/2020/sqlite-dll-win64-x64-3310100.zip" target="_blank" rel="noopener">sqlite-dll-win64-x64-3310100.zip</a><br><a href="https://www.sqlite.org/2020/sqlite-tools-win32-x86-3310100.zip" target="_blank" rel="noopener">sqlite-tools-win32-x86-3310100.zip</a></p>
+<p>解压至同一目录下，并添加至环境变量<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323095137.png" alt></p>
+<h1 id="DB-Browser-for-SQLite"><a href="#DB-Browser-for-SQLite" class="headerlink" title="DB Browser for SQLite"></a>DB Browser for SQLite</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323095823.png" alt></p>
+<p>（1）项目地址：<a href="http://sqlitebrowser.org/" target="_blank" rel="noopener">http://sqlitebrowser.org/</a><br>（2）DB Browser for SQLite 是一个高品质，可视化，开放源码的工具。用于创建，设计和编辑 SQLite 兼容的数据库文件。<br>（3）它适用于希望创建数据库，检索和编辑数据的用户和开发人员。它采用了熟悉的电子表格一样的界面，你不需要学习复杂的 SQL 命令。<br>（4）支持各种操作系统：Windows、MacOS、Linux</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>（1）创建数据库文件<br>（2）创建、定义、修改和删除表<br>（3）创建、定义和删除索引<br>（4）浏览、编辑、添加和删除记录<br>（5）搜索记录<br>（6）导入和导出为文本记录<br>（7）将表导出成 CSV 文件，或从 CSV 文件导入表<br>（8）将表导出成数据库存储文件，或从数据库存储文件导入表<br>（9）SQL 查询以及错误检查<br>（10）检查 SQL 命令的错误日志</p>
+<blockquote>
+<p><a href="https://www.hangge.com/blog/cache/detail_1375.html" target="_blank" rel="noopener">https://www.hangge.com/blog/cache/detail_1375.html</a></p>
+</blockquote>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><blockquote>
+<p><a href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener">https://sqlitebrowser.org/dl/</a></p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323114320.png" alt></p>
+<h1 id="SQLite命令"><a href="#SQLite命令" class="headerlink" title="SQLite命令"></a>SQLite命令</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235117.png" alt></p>
+<h1 id="SQLite常用命令"><a href="#SQLite常用命令" class="headerlink" title="SQLite常用命令"></a>SQLite常用命令</h1><pre class="line-numbers language-shell"><code class="language-shell">#查看命令清单
+.help
+
+#退出
+.quit
+.exit
+
+#开启/关闭头部信息
+.header ON | OFF
+
+# 显示各种设置的当前值
+.show
+
+# 设置输出模式
+.mode MODE
+    #MODE可以是: 
+    # csv 逗号分隔符
+    # column 左对齐的列
+    # html，html的<table>代码
+    # intert，TABLE表的SQL插入语句
+    # line, 每行一个
+    # list, 由 .separator 字符串分隔的值
+    # table, 由 Tab 分隔的值
+    # tcl, TCL列<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="SQLite语法"><a href="#SQLite语法" class="headerlink" title="SQLite语法"></a>SQLite语法</h1><h2 id="大小写敏感性"><a href="#大小写敏感性" class="headerlink" title="大小写敏感性"></a>大小写敏感性</h2><p>有个重要的点值得注意，SQLite 是<strong>不区分大小写</strong>的，但也有一些命令是大小写敏感的，比如 <strong>GLOB</strong> 和 <strong>glob</strong> 在 SQLite 的语句中有不同的含义。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>SQLite 注释是附加的注释，可以在 SQLite 代码中添加注释以增加其可读性，他们可以出现在任何空白处，包括在表达式内和其他 SQL 语句的中间，但它们不能嵌套。</p>
+<p>SQL 注释以两个连续的 “-“ 字符（ASCII 0x2d）开始，并扩展至下一个换行符（ASCII 0x0a）或直到输入结束，以先到者为准</p>
+<p>您也可以使用 C 风格的注释，以 “/<em>“ 开始，并扩展至下一个 “</em>/“ 字符对或直到输入结束，以先到者为准。SQLite的注释可以跨越多行。</p>
+<pre><code>sqlite&gt;.help --  这是一个简单的注释</code></pre><h1 id="SQLite-存储类"><a href="#SQLite-存储类" class="headerlink" title="SQLite 存储类"></a>SQLite 存储类</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323163449.png" alt></p>
+<h1 id="SQLite常用命令行操作"><a href="#SQLite常用命令行操作" class="headerlink" title="SQLite常用命令行操作"></a>SQLite常用命令行操作</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><pre class="line-numbers language-shell"><code class="language-shell">#创建
+sqlite3 test.db
+
+#查看
+sqlite> .databases
+
+#导出数据库内容到文本文件
+sqlite3 test.db .dump >testdb.sql
+
+#从文本文件恢复
+sqlite3 testdb.db < testdb.sql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="附加数据库"><a href="#附加数据库" class="headerlink" title="附加数据库"></a>附加数据库</h2><p>假设这样一种情况，当在同一时间有多个数据库可用，您想使用其中的任何一个。SQLite 的 <strong>ATTACH DATABASE</strong> 语句是用来选择一个特定的数据库，使用该命令后，所有的 SQLite 语句将在附加的数据库下执行。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ATTACH DATABASE 'test.db' AS 'test'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323170638.png" alt></p>
+<h2 id="分离数据库"><a href="#分离数据库" class="headerlink" title="分离数据库"></a>分离数据库</h2><p>SQLite的 <strong>DETACH DTABASE</strong> 语句是用来把命名数据库从一个数据库连接分离和游离出来，连接是之前使用 ATTACH 语句附加的。如果同一个数据库文件已经被附加上多个别名，DETACH 命令将只断开给定名称的连接，而其余的仍然有效。您无法分离 <strong>main</strong> 或 <strong>temp</strong> 数据库。</p>
+<blockquote>
+<p>如果数据库是在内存中或者是临时数据库，则该数据库将被摧毁，且内容将会丢失。</p>
+</blockquote>
+<pre class="line-numbers language-shell"><code class="language-shell">DETACH DATABASE 'testtest'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323171123.png" alt></p>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>SQLite 的 <strong>CREATE TABLE</strong> 语句用于在任何给定的数据库创建一个新表。创建基本表，涉及到命名表、定义列及每一列的数据类型。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">sqlite> CREATE TABLE COMPANY(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   AGE            INT     NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><p>SQLite 的 <strong>DROP TABLE</strong> 语句用来删除表定义及其所有相关数据、索引、触发器、约束和该表的权限规范。</p>
+<blockquote>
+<p>使用此命令时要特别注意，因为一旦一个表被删除，表中所有信息也将永远丢失。</p>
+</blockquote>
+<pre class="line-numbers language-shell"><code class="language-shell">#确认表已经存在
+sqlite>.tables
+
+#删除company表
+sqlite>DROP TABLE COMPANY<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="insert语句"><a href="#insert语句" class="headerlink" title="insert语句"></a>insert语句</h2><p>SQLite 的 <strong>INSERT INTO</strong> 语句用于向数据库的某个表中添加新的数据行。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323180657.png" alt></p>
+<pre class="line-numbers language-shell"><code class="language-shell">#向company表中添加内容
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1, 'Paul', 32, 'California', 20000.00 );
+
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (2, 'Allen', 25, 'Texas', 15000.00 );
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="select语句"><a href="#select语句" class="headerlink" title="select语句"></a>select语句</h2><p>SQLite 的 <strong>SELECT</strong> 语句用于从 SQLite 数据库表中获取数据，以结果表的形式返回数据。这些结果表也被称为结果集。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323180918.png" alt></p>
+<pre class="line-numbers language-shell"><code class="language-shell">#获取company id 和 name字段
+sqlite> SELECT id, name FROM COMPANY;
+
+#获取company表中所有字段
+sqlite> SELECT * FROM COMPANY;
+
+#设置输出列的宽度
+sqlite> .width 10,20,20
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="SQLite运算符"><a href="#SQLite运算符" class="headerlink" title="SQLite运算符"></a>SQLite运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323191038.png" alt></p>
+<pre class="line-numbers language-shell"><code class="language-shell">sqlite> select 10 + 20;
+10 + 20
+----------
+30<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323191238.png" alt></p>
+<pre class="line-numbers language-shell"><code class="language-shell">sqlite> SELECT * FROM COMPANY WHERE SALARY >= 10000;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323192410.png" alt></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323192558.png" alt></p>
+<pre class="line-numbers language-shell"><code class="language-shell">sqlite> SELECT * FROM COMPANY WHERE AGE BETWEEN 25 AND 27;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323192814.png" alt></p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323192958.png" alt></p>
+<h1 id="SQLite子句"><a href="#SQLite子句" class="headerlink" title="SQLite子句"></a>SQLite子句</h1><h2 id="SQLite-Where子句"><a href="#SQLite-Where子句" class="headerlink" title="SQLite Where子句"></a>SQLite Where子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200324105704.png" alt></p>
+<h2 id="SQLite-Update子句"><a href="#SQLite-Update子句" class="headerlink" title="SQLite Update子句"></a>SQLite Update子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200324105838.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200324110300.png" alt></p>
+<h2 id="SQLite-Like子句"><a href="#SQLite-Like子句" class="headerlink" title="SQLite Like子句"></a>SQLite Like子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231408.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231423.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231439.png" alt></p>
+<p>不区分大小写:<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231459.png" alt></p>
+<h2 id="SQLite-Glob子句"><a href="#SQLite-Glob子句" class="headerlink" title="SQLite Glob子句"></a>SQLite Glob子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231521.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231539.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231553.png" alt></p>
+<p>区分大小写：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231614.png" alt></p>
+<h2 id="SQLite-Limit子句"><a href="#SQLite-Limit子句" class="headerlink" title="SQLite Limit子句"></a>SQLite Limit子句</h2><p>SQLite 的 <strong>LIMIT</strong> 子句用于限制由 SELECT 语句返回的数据数量。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235214.png" alt><br>offset 指定开头要跳过多少行，如offset为3，则跳过1~3行；<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235230.png" alt></p>
+<h2 id="SQLite-Order-By子句"><a href="#SQLite-Order-By子句" class="headerlink" title="SQLite Order By子句"></a>SQLite Order By子句</h2><p>SQLite 的 <strong>ORDER BY</strong> 子句是用来基于一个或多个列按升序或降序顺序排列数据。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235240.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235251.png" alt></p>
+<h2 id="SQLite-Having子句"><a href="#SQLite-Having子句" class="headerlink" title="SQLite Having子句"></a>SQLite Having子句</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407235313.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002140.png" alt></p>
+<h1 id="SQLite-Distinct关键字"><a href="#SQLite-Distinct关键字" class="headerlink" title="SQLite Distinct关键字"></a>SQLite Distinct关键字</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002201.png" alt></p>
+<h1 id="SQLite约束"><a href="#SQLite约束" class="headerlink" title="SQLite约束"></a>SQLite约束</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002535.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002557.png" alt></p>
+<h1 id="SQLite-NULL-值"><a href="#SQLite-NULL-值" class="headerlink" title="SQLite NULL 值"></a>SQLite NULL 值</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002619.png" alt></p>
+<h1 id="SQLite-Trigger-触发器"><a href="#SQLite-Trigger-触发器" class="headerlink" title="SQLite Trigger(触发器)"></a>SQLite Trigger(触发器)</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002711.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200408002959.png" alt></p>
+<ul>
+<li>实例<br>让我们假设一个情况，我们要为被插入到新创建的 COMPANY 表（如果已经存在，则删除重新创建）中的每一个记录保持审计试验；<br>为了保持审计试验，我们将创建一个名为 AUDIT 的新表。每当 COMPANY 表中有一个新的记录项时，日志消息将被插入其中；<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409000937.png" alt><br>往company表中添加新记录：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001004.png" alt></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001043.png" alt></p>
+<h1 id="SQLite-索引（Index）"><a href="#SQLite-索引（Index）" class="headerlink" title="SQLite 索引（Index）"></a>SQLite 索引（Index）</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200409001341.png" alt></p>
+<ul>
+<li><p>创建索引<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094056.png" alt></p>
+</li>
+<li><p>索引类型<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094111.png" alt></p>
+</li>
+<li><p>删除索引<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094124.png" alt></p>
+</li>
+<li><p>什么情况下要避免使用索引？<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094158.png" alt></p>
+</li>
+<li><p>示例<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094210.png" alt></p>
+</li>
+</ul>
+<h1 id="SQLite-Indexed-By"><a href="#SQLite-Indexed-By" class="headerlink" title="SQLite Indexed By"></a>SQLite Indexed By</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094224.png" alt></p>
+<ul>
+<li>示例<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094238.png" alt></li>
+</ul>
+<h1 id="SQLite-Alter-命令"><a href="#SQLite-Alter-命令" class="headerlink" title="SQLite Alter 命令"></a>SQLite Alter 命令</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094250.png" alt></p>
+<ul>
+<li>实例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094301.png" alt></li>
+</ul>
+<h1 id="SQLite-视图（View）"><a href="#SQLite-视图（View）" class="headerlink" title="SQLite 视图（View）"></a>SQLite 视图（View）</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094316.png" alt></p>
+<ul>
+<li>实例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094335.png" alt></li>
+</ul>
+<h1 id="SQLite-事务（Transaction）"><a href="#SQLite-事务（Transaction）" class="headerlink" title="SQLite 事务（Transaction）"></a>SQLite 事务（Transaction）</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094353.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094534.png" alt></p>
+<h1 id="SQLite-子查询"><a href="#SQLite-子查询" class="headerlink" title="SQLite 子查询"></a>SQLite 子查询</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094559.png" alt></p>
+<ul>
+<li>实例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094610.png" alt></li>
+</ul>
+<h1 id="SQLite-Autoincrement（自动递增）"><a href="#SQLite-Autoincrement（自动递增）" class="headerlink" title="SQLite Autoincrement（自动递增）"></a>SQLite Autoincrement（自动递增）</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094620.png" alt></p>
+<h1 id="SQLite-日期-amp-时间"><a href="#SQLite-日期-amp-时间" class="headerlink" title="SQLite 日期 &amp; 时间"></a>SQLite 日期 &amp; 时间</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094641.png" alt></p>
+<ul>
+<li><p>时间字符串(timestring)<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094654.png" alt></p>
+</li>
+<li><p>修饰符（Modifier）<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094706.png" alt></p>
+</li>
+<li><p>格式化<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094718.png" alt></p>
+</li>
+<li><p>实例</p>
+<ul>
+<li><p>当前时间（格林尼治时间GMT,约等于UTC）<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094731.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094834.png" alt></p>
+</li>
+<li><p>当前时间 (本地)<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094851.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094911.png" alt></p>
+</li>
+<li><p>当前时间（unix时间戳）<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095049.png" alt></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="SQLite-常用函数"><a href="#SQLite-常用函数" class="headerlink" title="SQLite 常用函数"></a>SQLite 常用函数</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095113.png" alt></p>
+<h1 id="SQLite-API-C-C-接口"><a href="#SQLite-API-C-C-接口" class="headerlink" title="SQLite API C/C++接口"></a>SQLite API C/C++接口</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095218.png" alt></p>
+<h2 id="函数原型-sqlite3-open"><a href="#函数原型-sqlite3-open" class="headerlink" title="函数原型: sqlite3_open()"></a>函数原型: sqlite3_open()</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sqlite3_open</span><span class="token punctuation">(</span>
+  <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">,</span>   <span class="token comment" spellcheck="true">/* Database filename (UTF-8) */</span>
+  sqlite3 <span class="token operator">*</span><span class="token operator">*</span>ppDb          <span class="token comment" spellcheck="true">/* OUT: SQLite db handle */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意</strong>：<br>    <em> 不管打开是否出错，都需要调用sqlite_close()关闭；
+    </em> 如果 _filename_ 参数是 NULL 或 ‘:memory:’，那么 sqlite3_open() 将会在 RAM 中创建一个内存数据库；<br>    * 如果该名称的文件不存在，sqlite3_open() 将创建一个新的命名为该名称的数据库文件并打开；</p>
+<h2 id="函数原型：sqlite3-exec"><a href="#函数原型：sqlite3-exec" class="headerlink" title="函数原型：sqlite3_exec()"></a>函数原型：sqlite3_exec()</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sqlite3_exec</span><span class="token punctuation">(</span>
+  sqlite3<span class="token operator">*</span><span class="token punctuation">,</span>                                  <span class="token comment" spellcheck="true">/* An open database */</span>
+  <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>sql<span class="token punctuation">,</span>                           <span class="token comment" spellcheck="true">/* SQL to be evaluated */</span>
+  <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>callback<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">/* Callback function */</span>
+  <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span>                                    <span class="token comment" spellcheck="true">/* 1st argument to callback */</span>
+  <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>errmsg                              <span class="token comment" spellcheck="true">/* Error msg written here */</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>回调函数：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095245.png" alt></p>
+<p><strong>注意</strong>：如果提供 了errmsg，用来创建错误消息的内存是在堆上分布的。 故在调用后，应该检查一下是否为null值，如果有错误发生，使用sqlite3_free()释放errmsg占用的内存。</p>
+<h2 id="实例：连接数据库"><a href="#实例：连接数据库" class="headerlink" title="实例：连接数据库"></a>实例：连接数据库</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">//test_open.c</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   sqlite3 <span class="token operator">*</span>db<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>zErrMsg <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token keyword">int</span> rc<span class="token punctuation">;</span>
+
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_open</span><span class="token punctuation">(</span><span class="token string">"test.db"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Can't open database: %s\n"</span><span class="token punctuation">,</span> <span class="token function">sqlite3_errmsg</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Opened database successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">sqlite3_close</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编译：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">#最初使用这种方式，发现找不到头文件
+gcc -o test_open test_open.c
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">#然后将头文件拷贝到目录下，改成#include "sqlite3.h",
+#提示找不到引用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095308.png" alt></p>
+<pre class="line-numbers language-shell"><code class="language-shell">#然后发现应该加 -l sqlite3, 发现依旧出错
+gcc -o test_open test_open.c -l sqlite3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095321.png" alt><br>使用<code>find -name &quot;libsqlite3.so&quot;</code>发现为找到相关库；</p>
+<p>最后解决方案,是没有安装sqlite-devel,安装：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">sudo yum install sqlite-devel
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095333.png" alt></p>
+<h2 id="实例：创建表"><a href="#实例：创建表" class="headerlink" title="实例：创建表"></a>实例：创建表</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span></span>
+
+<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>NotUsed<span class="token punctuation">,</span> <span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>azColName<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s = %s\n"</span><span class="token punctuation">,</span> azColName<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">?</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token string">"NULL"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   sqlite3 <span class="token operator">*</span>db<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>zErrMsg <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token keyword">int</span>  rc<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>sql<span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Open database */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_open</span><span class="token punctuation">(</span><span class="token string">"test.db"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Can't open database: %s\n"</span><span class="token punctuation">,</span> <span class="token function">sqlite3_errmsg</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token string">"Opened database successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token comment" spellcheck="true">/* Create SQL statement */</span>
+   sql <span class="token operator">=</span> <span class="token string">"CREATE TABLE COMPANY("</span>  \
+         <span class="token string">"ID INT PRIMARY KEY     NOT NULL,"</span> \
+         <span class="token string">"NAME           TEXT    NOT NULL,"</span> \
+         <span class="token string">"AGE            INT     NOT NULL,"</span> \
+         <span class="token string">"ADDRESS        CHAR(50),"</span> \
+         <span class="token string">"SALARY         REAL );"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Execute SQL statement */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_exec</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> sql<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token operator">!=</span> SQLITE_OK <span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"SQL error: %s\n"</span><span class="token punctuation">,</span> zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">sqlite3_free</span><span class="token punctuation">(</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token string">"Table created successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">sqlite3_close</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="实例：SELECT-操作"><a href="#实例：SELECT-操作" class="headerlink" title="实例：SELECT 操作"></a>实例：SELECT 操作</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span></span>
+
+<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> <span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>azColName<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+   <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"%s: "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s = %s\n"</span><span class="token punctuation">,</span> azColName<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">?</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token string">"NULL"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   sqlite3 <span class="token operator">*</span>db<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>zErrMsg <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token keyword">int</span> rc<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>sql<span class="token punctuation">;</span>
+   <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> data <span class="token operator">=</span> <span class="token string">"Callback function called"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Open database */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_open</span><span class="token punctuation">(</span><span class="token string">"test.db"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Can't open database: %s\n"</span><span class="token punctuation">,</span> <span class="token function">sqlite3_errmsg</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Opened database successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token comment" spellcheck="true">/* Create SQL statement */</span>
+   sql <span class="token operator">=</span> <span class="token string">"SELECT * from COMPANY"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Execute SQL statement */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_exec</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> sql<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">,</span> <span class="token operator">&amp;</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token operator">!=</span> SQLITE_OK <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"SQL error: %s\n"</span><span class="token punctuation">,</span> zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">sqlite3_free</span><span class="token punctuation">(</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token string">"Operation done successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">sqlite3_close</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="实例：UPDATE操作"><a href="#实例：UPDATE操作" class="headerlink" title="实例：UPDATE操作"></a>实例：UPDATE操作</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span> </span>
+
+<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> <span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>azColName<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+   <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"%s: "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s = %s\n"</span><span class="token punctuation">,</span> azColName<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">?</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token string">"NULL"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   sqlite3 <span class="token operator">*</span>db<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>zErrMsg <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token keyword">int</span> rc<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>sql<span class="token punctuation">;</span>
+   <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> data <span class="token operator">=</span> <span class="token string">"Callback function called"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Open database */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_open</span><span class="token punctuation">(</span><span class="token string">"test.db"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Can't open database: %s\n"</span><span class="token punctuation">,</span> <span class="token function">sqlite3_errmsg</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Opened database successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token comment" spellcheck="true">/* Create merged SQL statement */</span>
+   sql <span class="token operator">=</span> <span class="token string">"UPDATE COMPANY set SALARY = 25000.00 where ID=1; "</span> \
+         <span class="token string">"SELECT * from COMPANY"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Execute SQL statement */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_exec</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> sql<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">,</span> <span class="token operator">&amp;</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token operator">!=</span> SQLITE_OK <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"SQL error: %s\n"</span><span class="token punctuation">,</span> zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">sqlite3_free</span><span class="token punctuation">(</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token string">"Operation done successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">sqlite3_close</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="实例：Delete"><a href="#实例：Delete" class="headerlink" title="实例：Delete"></a>实例：Delete</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sqlite3.h></span> </span>
+
+<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> <span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>azColName<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+   <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"%s: "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s = %s\n"</span><span class="token punctuation">,</span> azColName<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">?</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token string">"NULL"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   sqlite3 <span class="token operator">*</span>db<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>zErrMsg <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token keyword">int</span> rc<span class="token punctuation">;</span>
+   <span class="token keyword">char</span> <span class="token operator">*</span>sql<span class="token punctuation">;</span>
+   <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> data <span class="token operator">=</span> <span class="token string">"Callback function called"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Open database */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_open</span><span class="token punctuation">(</span><span class="token string">"test.db"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Can't open database: %s\n"</span><span class="token punctuation">,</span> <span class="token function">sqlite3_errmsg</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Opened database successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token comment" spellcheck="true">/* Create merged SQL statement */</span>
+   sql <span class="token operator">=</span> <span class="token string">"DELETE from COMPANY where ID=2; "</span> \
+         <span class="token string">"SELECT * from COMPANY"</span><span class="token punctuation">;</span>
+
+   <span class="token comment" spellcheck="true">/* Execute SQL statement */</span>
+   rc <span class="token operator">=</span> <span class="token function">sqlite3_exec</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> sql<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">,</span> <span class="token operator">&amp;</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span> rc <span class="token operator">!=</span> SQLITE_OK <span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"SQL error: %s\n"</span><span class="token punctuation">,</span> zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">sqlite3_free</span><span class="token punctuation">(</span>zErrMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token string">"Operation done successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">sqlite3_close</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="SQLite线程安全和并发"><a href="#SQLite线程安全和并发" class="headerlink" title="SQLite线程安全和并发"></a>SQLite线程安全和并发</h1><h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095351.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095409.png" alt></p>
+<blockquote>
+<p><a href="https://jin-yang.github.io/post/sqlite-introduce.html" target="_blank" rel="noopener">https://jin-yang.github.io/post/sqlite-introduce.html</a></p>
+</blockquote>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095421.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095442.png" alt></p>
+<h1 id="Rollback-journal-和-WAL-Write-Ahead-Log"><a href="#Rollback-journal-和-WAL-Write-Ahead-Log" class="headerlink" title="Rollback journal 和 WAL(Write-Ahead Log)"></a>Rollback journal 和 WAL(Write-Ahead Log)</h1><ul>
+<li><p>Rollback journal<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095455.png" alt></p>
+</li>
+<li><p>WAL<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095507.png" alt></p>
+</li>
+</ul>
+<h1 id="SQLite-database-lock错误"><a href="#SQLite-database-lock错误" class="headerlink" title="SQLite database lock错误"></a>SQLite database lock错误</h1><ul>
+<li><p>说明<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407222707.png" alt></p>
+</li>
+<li><p>可能出现database lock错误的原因<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200407222759.png" alt></p>
+</li>
+</ul>
+<h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
+<p><a href="http://zetcode.com/db/sqlitec/" target="_blank" rel="noopener">SQLite C tutorial</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.runoob.com/sqlite/sqlite-tutorial.html" target="_blank" rel="noopener">SQLite教程</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/29234064" target="_blank" rel="noopener">图解 SQL 里的各种 JOIN</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/xiangwangfeng/xiangwangfeng.github.io/wiki/SQLite-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E5%B9%B6%E5%8F%91" target="_blank" rel="noopener">SQLite 线程安全和并发</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://xiaozhuanlan.com/topic/1754328960" target="_blank" rel="noopener">SQLite WAL 模式简单介绍</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://wordpress.semnaitik.com/sqlite-error-database-is-locked-code-5/" target="_blank" rel="noopener">SQLite Error Database is Locked- How to resolve?</a></p>
+</blockquote>
+
+            </div>
+            <hr />
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《SQLite学习笔记》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/fefc90b9/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Kang
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '213909d743c8db4589d6',
+        clientSecret: 'dd0bd95b9953f2943dee86dedf8fe81e596d9d50',
+        repo: 'littlekang-code.github.io',
+        owner: 'littlekang-code',
+        admin: "littlekang-code",
+        id: 'article/fefc90b9/',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/article/fefc90b9/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="SQLite学习笔记">
+                        
+                        <span class="card-title">SQLite学习笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据库基础概念数据库的模型
+层次模型
+网状模型
+关系模型
+面向对象模型
+半结构化模型
+
+由于关系模型在很长一段时间内成为主流的数据模型，所以我们也习惯性将数据库类型分为两类，关系型数据库和非关系型数据库。
+关系型数据库这是我们目前至今主流的
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQLite/" target="_blank">
+                        <span class="chip bg-color">SQLite</span>
+                    </a>
+                    
+                    <a href="/tags/数据库/" target="_blank">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/2dce40ee/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="嵌入式固件升级_tomcat搭建http服务">
+                        
+                        <span class="card-title">嵌入式固件升级_tomcat搭建http服务</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            修改登陆用户名密码首先进入tomcat文件夹的conf文件夹，首先复制一份tomcat-users.xml作为备份然后修改这个配置文件，用记事本打开，找到
+&lt;!--
+&lt;role rolename=&quot;tomcat&quo
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/http/" target="_blank">
+                        <span class="chip bg-color">http</span>
+                    </a>
+                    
+                    <a href="/tags/upgrade/" target="_blank">
+                        <span class="chip bg-color">upgrade</span>
+                    </a>
+                    
+                    <a href="/tags/嵌入式/" target="_blank">
+                        <span class="chip bg-color">嵌入式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 行走的康康<br />'
+            + '作者: Kang<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () { bodyElement.removeChild(newdiv); }, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 Kang. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">10.7k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/https://github.com/littlekang-code" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2020, 02, 10, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "ヽ(●-`Д´-)ノ你好哇~", clearTimeout(st)) : (document.title = "(Ő∀Ő3)ノ你来啦", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    
+    <script src="/libs/others/clicklove.js"></script>
+    
+
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+</body>
+
+</html>
