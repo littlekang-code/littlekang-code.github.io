@@ -494,17 +494,15 @@
 <p>所以个人认为，虽然现在是关系型数据库的天下，但相信以后会出现一些优秀的非关系型数据库取代传统的关系型数据库。因为以后必然是大数据的时代，那么海量数据下，传统的关系型数据的效率问题就会被逐渐放大。</p>
 <h2 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h2><p><strong>索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可快速访问数据库表中的特定信息。</strong></p>
 <p>索引分为：聚集索引、非聚集索引、唯一索引等。<br>一张表可以有多个唯一索引和非聚集索引，但最多只能有一个聚集索引。 - 索引可以包含多列。<br>合理的创建索引能够提升查询语句的执行效率，但降低了新增、删除操作的速度，同时也会消耗一定的数据库物理空间。</p>
-<h2 id="在关系型数据库中如何描述多对多的关系"><a href="#在关系型数据库中如何描述多对多的关系" class="headerlink" title="在关系型数据库中如何描述多对多的关系"></a>在关系型数据库中如何描述多对多的关系</h2><p><strong>系型数据库中描述多对多的关系,需要建立第三张数据表。</strong><br>比如学生选课,需要在学生信息表和课程信息表的基础上,再建立选课信息表,该表中存放学生Id和课程Id。</p>
-<h2 id="什么是内联接、左外联接、右外联接"><a href="#什么是内联接、左外联接、右外联接" class="headerlink" title="什么是内联接、左外联接、右外联接"></a>什么是内联接、左外联接、右外联接</h2><ul>
+<h2 id="如何描述多对多的关系"><a href="#如何描述多对多的关系" class="headerlink" title="如何描述多对多的关系"></a>如何描述多对多的关系</h2><p><strong>系型数据库中描述多对多的关系,需要建立第三张数据表。</strong><br>比如学生选课,需要在学生信息表和课程信息表的基础上,再建立选课信息表,该表中存放学生Id和课程Id。</p>
+<h2 id="内联接、左外联接、右外联接"><a href="#内联接、左外联接、右外联接" class="headerlink" title="内联接、左外联接、右外联接"></a>内联接、左外联接、右外联接</h2><ul>
 <li><strong>(Inner Join）</strong>：匹配2张表中相关联的记录。</li>
 <li><strong>(Left Outer Join）</strong>：除了匹配2张表中相关联的记录外，还会匹配左表中剩余的记录，右表中未匹配到的字段用NULL表示。</li>
 <li><strong>(Right Outer Join）</strong>：除了匹配2张表中相关联的记录外，还会匹配右表中剩余的记录，左表中未匹配到的字段用NULL表示。在判定左表和右表时，要根据表名出现在Outer Join的左右位置关系。</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230828.png" alt></p>
 <ul>
-<li><p><strong>实例讲解</strong></p>
-<ul>
-<li><p>约定<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230852.png" alt></p>
+<li><p><strong>约定</strong><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230852.png" alt></p>
 </li>
 <li><p><strong>INNER JOIN 内联查询</strong><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230916.png" alt><br>示例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401230934.png" alt></p>
 </li>
@@ -513,14 +511,12 @@
 <li><p><strong>RIGHT JOIN 右连接查询</strong><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231041.png" alt><br>示例：(sqlite 不支持right join &amp; full join)<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231105.png" alt></p>
 </li>
 <li><p><em><em>CROSS JOIN </em></em><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231129.png" alt><br>示例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231153.png" alt></p>
-</li>
-</ul>
-</li>
-</ul>
 <blockquote>
 <p><a href="https://zhuanlan.zhihu.com/p/29234064" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29234064</a></p>
 </blockquote>
-<h2 id="sql语句中join-on和where用法的区别和联系"><a href="#sql语句中join-on和where用法的区别和联系" class="headerlink" title="sql语句中join on和where用法的区别和联系"></a>sql语句中join on和where用法的区别和联系</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231215.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231243.png" alt></p>
+</li>
+</ul>
+<h2 id="sql语句中join-on和where"><a href="#sql语句中join-on和where" class="headerlink" title="sql语句中join on和where"></a>sql语句中join on和where</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231215.png" alt><br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200401231243.png" alt></p>
 <blockquote>
 <p><a href="https://my.oschina.net/jun24bryant/blog/787375" target="_blank" rel="noopener">https://my.oschina.net/jun24bryant/blog/787375</a></p>
 </blockquote>
@@ -626,8 +622,7 @@ INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
 VALUES (1, 'Paul', 32, 'California', 20000.00 );
 
 INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
-VALUES (2, 'Allen', 25, 'Texas', 15000.00 );
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+VALUES (2, 'Allen', 25, 'Texas', 15000.00 );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="select语句"><a href="#select语句" class="headerlink" title="select语句"></a>select语句</h2><p>SQLite 的 <strong>SELECT</strong> 语句用于从 SQLite 数据库表中获取数据，以结果表的形式返回数据。这些结果表也被称为结果集。<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323180918.png" alt></p>
 <pre class="line-numbers language-shell"><code class="language-shell">#获取company id 和 name字段
 sqlite> SELECT id, name FROM COMPANY;
@@ -636,8 +631,7 @@ sqlite> SELECT id, name FROM COMPANY;
 sqlite> SELECT * FROM COMPANY;
 
 #设置输出列的宽度
-sqlite> .width 10,20,20
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+sqlite> .width 10,20,20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="SQLite运算符"><a href="#SQLite运算符" class="headerlink" title="SQLite运算符"></a>SQLite运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200323191038.png" alt></p>
 <pre class="line-numbers language-shell"><code class="language-shell">sqlite> select 10 + 20;
 10 + 20
@@ -706,7 +700,7 @@ sqlite> .width 10,20,20
 <ul>
 <li>实例：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094610.png" alt></li>
 </ul>
-<h1 id="SQLite-Autoincrement（自动递增）"><a href="#SQLite-Autoincrement（自动递增）" class="headerlink" title="SQLite Autoincrement（自动递增）"></a>SQLite Autoincrement（自动递增）</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094620.png" alt></p>
+<h1 id="SQLite-Autoincrement"><a href="#SQLite-Autoincrement" class="headerlink" title="SQLite Autoincrement"></a>SQLite Autoincrement</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094620.png" alt></p>
 <h1 id="SQLite-日期-amp-时间"><a href="#SQLite-日期-amp-时间" class="headerlink" title="SQLite 日期 &amp; 时间"></a>SQLite 日期 &amp; 时间</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094641.png" alt></p>
 <ul>
 <li><p>时间字符串(timestring)<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410094654.png" alt></p>
@@ -970,7 +964,7 @@ gcc -o test_open test_open.c -l sqlite3<span aria-hidden="true" class="line-numb
 </blockquote>
 <h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095421.png" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095442.png" alt></p>
-<h1 id="Rollback-journal-和-WAL-Write-Ahead-Log"><a href="#Rollback-journal-和-WAL-Write-Ahead-Log" class="headerlink" title="Rollback journal 和 WAL(Write-Ahead Log)"></a>Rollback journal 和 WAL(Write-Ahead Log)</h1><ul>
+<h1 id="Rollback-journal-和-WAL"><a href="#Rollback-journal-和-WAL" class="headerlink" title="Rollback journal 和 WAL"></a>Rollback journal 和 WAL</h1><ul>
 <li><p>Rollback journal<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095455.png" alt></p>
 </li>
 <li><p>WAL<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200410095507.png" alt></p>
