@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>omv新建用户ssh登录问题</title>
+      <link href="/article/ca546b13/"/>
+      <url>/article/ca546b13/</url>
+      
+        <content type="html"><![CDATA[<h1 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h1><ul><li>方法一：使用dash控制面板<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_2907-zFEHAkhF4zrW3km2.jpg" style="zoom:200%;"> </li></ul><ul><li>方法二；使用useradd命令<pre class="line-numbers language-shell"><code class="language-shell">useradd -s /bin/bash pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ul><h1 id="bash和profile相关知识"><a href="#bash和profile相关知识" class="headerlink" title="bash和profile相关知识"></a>bash和profile相关知识</h1><ul><li><p>引用地址：</p><blockquote><p><a href="https://wido.me/sunteya/understand-bashrc-and-profile" target="_blank" rel="noopener">https://wido.me/sunteya/understand-bashrc-and-profile</a></p><p><a href="https://www.jianshu.com/p/c4946024b946" target="_blank" rel="noopener">https://www.jianshu.com/p/c4946024b946</a></p></blockquote></li><li><p>login shell 和 no login shell</p><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_3347-kkjuPPBJEw17jWnL.jpg" style="zoom:200%;"> </li></ul><ul><li>bash和profile的区别<br><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_3549-iAkr3fiYRh8gCKbJ.jpg" alt> </li></ul><h1 id="拷贝root用户配置文件"><a href="#拷贝root用户配置文件" class="headerlink" title="拷贝root用户配置文件"></a>拷贝root用户配置文件</h1><ul><li><p>root ssh登录拷贝</p><pre class="line-numbers language-shell"><code class="language-shell">cp /root/.bashrc /home/xxx/cp /root/.profile /home/xxx/chown xxx .bashrc .profilechgrp xxx .bashrc .profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>注意：<code>.profile</code>文件中配置如下</p><pre class="line-numbers language-shell"><code class="language-shell"># ~/.profile: executed by Bourne-compatible login shells.if [ "$BASH" ]; thenif [ -f ~/.bashrc ]; then  . ~/.bashrcfifimesg n || true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这个脚本中的 <code>$BASH</code>判断用户使用的shell是否是bash shell,所以如果创建时没有选对，可以通过<code>/etc/passwd</code>修改</p><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4100-DJwRk8Jhq8dmBY3M.jpg" style="zoom:200%;"> </li></ul><h1 id="关于新建用户不能shell登录问题"><a href="#关于新建用户不能shell登录问题" class="headerlink" title="关于新建用户不能shell登录问题"></a>关于新建用户不能shell登录问题</h1><ul><li>原因：sshd配置文件中对可登录的user group做了限定<br>/etc/ssh/sshd_config中：<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4624-iVQ2NTr0Thy8LQWv.jpg" style="zoom:200%;"> </li></ul><ul><li>解决方法：修改用户所在组，将用户添加到ssh组； 或修改sshd_config，允许新user group;<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4403-3TF0NCMtNCuecyNE.jpg" style="zoom:200%;"> </li></ul><p>2020-09-12 23:46:35 星期六</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nas </tag>
+            
+            <tag> omv </tag>
+            
+            <tag> ssh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>omv+minio+picuploader: 个人图床搭建</title>
       <link href="/article/3886282d/"/>
       <url>/article/3886282d/</url>

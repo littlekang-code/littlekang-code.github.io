@@ -4,13 +4,24 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="嵌入式固件升级_tomcat搭建http服务, 行走的康康">
+    <meta name="keywords" content="omv新建用户ssh登录问题, 行走的康康">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="修改登陆用户名密码首先进入tomcat文件夹的conf文件夹，首先复制一份tomcat-users.xml作为备份然后修改这个配置文件，用记事本打开，找到
-&amp;lt;!--
-&amp;lt;role rolename=&amp;quot;tomcat&amp;quo">
+    <meta name="description" content="新建用户
+方法一：使用dash控制面板 
+
+
+
+
+
+方法二；使用useradd命令useradd -s /bin/bash pub
+
+
+bash和profile相关知识
+引用地址：
+
+https://wido.me/sunteya/unde">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +29,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>嵌入式固件升级_tomcat搭建http服务 | 行走的康康</title>
+    <title>omv新建用户ssh登录问题 | 行走的康康</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +303,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        嵌入式固件升级_tomcat搭建http服务
+                        omv新建用户ssh登录问题
                     </div>
                 </div>
             </div>
@@ -409,16 +420,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/http/" target="_blank">
-                            <span class="chip bg-color">http</span>
+                        <a href="/tags/nas/" target="_blank">
+                            <span class="chip bg-color">nas</span>
                         </a>
                         
-                        <a href="/tags/upgrade/" target="_blank">
-                            <span class="chip bg-color">upgrade</span>
+                        <a href="/tags/omv/" target="_blank">
+                            <span class="chip bg-color">omv</span>
                         </a>
                         
-                        <a href="/tags/嵌入式/" target="_blank">
-                            <span class="chip bg-color">嵌入式</span>
+                        <a href="/tags/ssh/" target="_blank">
+                            <span class="chip bg-color">ssh</span>
                         </a>
                         
                     </div>
@@ -441,7 +452,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-12
+                    2020-09-12
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -455,7 +466,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    406
+                    233
                 </div>
                 
 
@@ -478,60 +489,64 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="修改登陆用户名密码"><a href="#修改登陆用户名密码" class="headerlink" title="修改登陆用户名密码"></a>修改登陆用户名密码</h1><p>首先进入tomcat文件夹的conf文件夹，首先复制一份tomcat-users.xml作为备份<br>然后修改这个配置文件，用记事本打开，找到</p>
-<pre><code>&lt;!--
-&lt;role rolename=&quot;tomcat&quot;/&gt;
-&lt;role rolename=&quot;role1&quot;/&gt;
-&lt;user username=&quot;tomcat&quot; password=&quot;&lt;must-be-changed&gt;&quot; roles=&quot;tomcat&quot;/&gt;
-&lt;user username=&quot;both&quot; password=&quot;&lt;must-be-changed&gt;&quot; roles=&quot;tomcat,role1&quot;/&gt;
-&lt;user username=&quot;role1&quot; password=&quot;&lt;must-be-changed&gt;&quot; roles=&quot;role1&quot;/&gt;
---&gt;</code></pre><p>去掉开头和结尾的<code>&lt;!-- --&gt;</code>然后修改为</p>
-<pre><code>&lt;role rolename=&quot;manager-gui&quot;/&gt;
-&lt;role rolename=&quot;admin-gui&quot;/&gt;
-&lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;manager-gui,admin-gui&quot;/&gt;</code></pre><p>其中如果你只添加manager-gui可以进去sever status和manager app，添加了admin-gui以后才能进去host-manager，然后重启tomcat<br>账号密码为：tomcat<br>如果cmd窗口一闪而过你又想知道是哪儿报错了，请用cmd进入tomcat/bin文件夹然后用debug模式启动———catalina debug,一般是端口被占用，比如被你eclipse已经调用了tomcat</p>
-<h1 id="tomcat-server-xml配置说明"><a href="#tomcat-server-xml配置说明" class="headerlink" title="tomcat server.xml配置说明"></a>tomcat server.xml配置说明</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312091604.png" alt></p>
+                <h1 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h1><ul>
+<li>方法一：使用dash控制面板<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_2907-zFEHAkhF4zrW3km2.jpg" style="zoom:200%;"> 
+
+
+</li>
+</ul>
 <ul>
-<li><p>server.xml描述了如何启动Tomcat Server</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Server</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Listener</span> <span class="token punctuation">/></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>GlobaNamingResources</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>GlobaNamingResources</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Service</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Engine</span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Logger</span> <span class="token punctuation">/></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Realm</span> <span class="token punctuation">/></span></span>
-             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>host</span><span class="token punctuation">></span></span>
-                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Logger</span> <span class="token punctuation">/></span></span>
-                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Context</span> <span class="token punctuation">/></span></span>
-             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>host</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Engine</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Service</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Server</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>参数说明：<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312092234.png" alt></p>
+<li>方法二；使用useradd命令<pre class="line-numbers language-shell"><code class="language-shell">useradd -s /bin/bash pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ul>
-<h1 id="修改配置，增加固件文件夹"><a href="#修改配置，增加固件文件夹" class="headerlink" title="修改配置，增加固件文件夹"></a>修改配置，增加固件文件夹</h1><ul>
-<li><p>新建固件文件夹fw<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312094524.png" alt></p>
-</li>
-<li><p>修改server.xml，使fw可以被访问<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200312093806.png" alt></p>
-</li>
-<li><p>新增index.xml，helloworld</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello world~~<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
-<p><a href="https://www.cnblogs.com/f-ck-need-u/p/8120008.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/8120008.html</a><br><a href="https://blog.csdn.net/zcyhappy1314/article/details/10356909" target="_blank" rel="noopener">https://blog.csdn.net/zcyhappy1314/article/details/10356909</a></p>
+<h1 id="bash和profile相关知识"><a href="#bash和profile相关知识" class="headerlink" title="bash和profile相关知识"></a>bash和profile相关知识</h1><ul>
+<li><p>引用地址：</p>
+<blockquote>
+<p><a href="https://wido.me/sunteya/understand-bashrc-and-profile" target="_blank" rel="noopener">https://wido.me/sunteya/understand-bashrc-and-profile</a></p>
+<p><a href="https://www.jianshu.com/p/c4946024b946" target="_blank" rel="noopener">https://www.jianshu.com/p/c4946024b946</a></p>
 </blockquote>
+</li>
+<li><p>login shell 和 no login shell</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_3347-kkjuPPBJEw17jWnL.jpg" style="zoom:200%;"> 
+
+
+</li>
+</ul>
+<ul>
+<li>bash和profile的区别<br><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_3549-iAkr3fiYRh8gCKbJ.jpg" alt> </li>
+</ul>
+<h1 id="拷贝root用户配置文件"><a href="#拷贝root用户配置文件" class="headerlink" title="拷贝root用户配置文件"></a>拷贝root用户配置文件</h1><ul>
+<li><p>root ssh登录拷贝</p>
+<pre class="line-numbers language-shell"><code class="language-shell">cp /root/.bashrc /home/xxx/
+cp /root/.profile /home/xxx/
+chown xxx .bashrc .profile
+chgrp xxx .bashrc .profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>注意：<code>.profile</code>文件中配置如下</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># ~/.profile: executed by Bourne-compatible login shells.
+if [ "$BASH" ]; then
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+fi
+mesg n || true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个脚本中的 <code>$BASH</code>判断用户使用的shell是否是bash shell,所以如果创建时没有选对，可以通过<code>/etc/passwd</code>修改</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4100-DJwRk8Jhq8dmBY3M.jpg" style="zoom:200%;"> 
+
+</li>
+</ul>
+<h1 id="关于新建用户不能shell登录问题"><a href="#关于新建用户不能shell登录问题" class="headerlink" title="关于新建用户不能shell登录问题"></a>关于新建用户不能shell登录问题</h1><ul>
+<li>原因：sshd配置文件中对可登录的user group做了限定<br>/etc/ssh/sshd_config中：<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4624-iVQ2NTr0Thy8LQWv.jpg" style="zoom:200%;"> 
+
+
+</li>
+</ul>
+<ul>
+<li>解决方法：修改用户所在组，将用户添加到ssh组； 或修改sshd_config，允许新user group;<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4403-3TF0NCMtNCuecyNE.jpg" style="zoom:200%;"> 
+
+</li>
+</ul>
+<p>2020-09-12 23:46:35 星期六</p>
 
             </div>
             <hr />
@@ -566,9 +581,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《嵌入式固件升级_tomcat搭建http服务》
+                    《omv新建用户ssh登录问题》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/2dce40ee/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/ca546b13/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Kang
             </a> 采用
@@ -609,7 +624,7 @@
         repo: 'littlekang-code.github.io',
         owner: 'littlekang-code',
         admin: "littlekang-code",
-        id: 'article/2dce40ee/',
+        id: 'article/ca546b13/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -630,92 +645,42 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/fefc90b9/">
+                <a href="/article/ca546b13/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="SQLite学习笔记">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="omv新建用户ssh登录问题">
                         
-                        <span class="card-title">SQLite学习笔记</span>
+                        <span class="card-title">omv新建用户ssh登录问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            数据库基础概念数据库的模型
-层次模型
-网状模型
-关系模型
-面向对象模型
-半结构化模型
+                            新建用户
+方法一：使用dash控制面板 
 
-由于关系模型在很长一段时间内成为主流的数据模型，所以我们也习惯性将数据库类型分为两类，关系型数据库和非关系型数据库。
-关系型数据库这是我们目前至今主流的
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-10
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
-                                    学习笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SQLite/" target="_blank">
-                        <span class="chip bg-color">SQLite</span>
-                    </a>
-                    
-                    <a href="/tags/数据库/" target="_blank">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/article/57e8f993/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="使用kermit通过串口升级openwrt uboot">
-                        
-                        <span class="card-title">使用kermit通过串口升级openwrt uboot</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            缘由因为购买的MT7688模块自带uboot，tftp升级固件功能无法使用，tftp一直显示错误，无法升级文件系统；
-好在还可以通过串口升级uboot.
 
-在板子启动的时候，输入“7”来选择通过串口升级uboot，然后看到下面的输出：Rea
+
+
+
+方法二；使用useradd命令useradd -s /bin/bash pub
+
+
+bash和profile相关知识
+引用地址：
+
+https://wido.me/sunteya/unde
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-11
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-12
                             </span>
                         <span class="publish-author">
                             
@@ -729,11 +694,78 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/openwrt/" target="_blank">
-                        <span class="chip bg-color">openwrt</span>
+                    <a href="/tags/nas/" target="_blank">
+                        <span class="chip bg-color">nas</span>
+                    </a>
+                    
+                    <a href="/tags/omv/" target="_blank">
+                        <span class="chip bg-color">omv</span>
+                    </a>
+                    
+                    <a href="/tags/ssh/" target="_blank">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/3886282d/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="omv+minio+picuploader: 个人图床搭建">
+                        
+                        <span class="card-title">omv+minio+picuploader: 个人图床搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            [TOC]
+1. OMV 中配置MinIO服务端1.1 MinIO简介MinIO 是一个基于Apache License v2.0开源协议的对象存储服务。它兼容亚马逊S3云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/高效/" class="post-category" target="_blank">
+                                    高效
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/图床/" target="_blank">
+                        <span class="chip bg-color">图床</span>
+                    </a>
+                    
+                    <a href="/tags/minio/" target="_blank">
+                        <span class="chip bg-color">minio</span>
+                    </a>
+                    
+                    <a href="/tags/PicUploader/" target="_blank">
+                        <span class="chip bg-color">PicUploader</span>
                     </a>
                     
                 </div>
