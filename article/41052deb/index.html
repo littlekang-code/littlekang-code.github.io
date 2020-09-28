@@ -4,21 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Openwrt软件包创建, 行走的康康">
+    <meta name="keywords" content="C++如何导出dll, 行走的康康">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="[TOC]
-相关知识
-
-
-https://lingxiankong.github.io/2014-01-06-linux-install.html
-
-Openwrt软件源码包的结构
-Makefile(必选)
-提供了下载、编译、安装的步骤
-
-">
+    <meta name="description" content="什么是dllDLL 是一个包含可由多个程序同时使用的代码和数据的库。 例如，在 Windows 操作系统中，Comdlg32 DLL 执行与对话框有关的常见函数。 因此，每个程序都可以使用该 DLL 中包含的功能来实现“打开”对话框。 这有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +16,7 @@ Makefile(必选)
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Openwrt软件包创建 | 行走的康康</title>
+    <title>C++如何导出dll | 行走的康康</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -300,13 +290,13 @@ Makefile(必选)
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Openwrt软件包创建
+                        C++如何导出dll
                     </div>
                 </div>
             </div>
@@ -417,8 +407,12 @@ Makefile(必选)
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/openwrt/" target="_blank">
-                            <span class="chip bg-color">openwrt</span>
+                        <a href="/tags/c/" target="_blank">
+                            <span class="chip bg-color">c++</span>
+                        </a>
+                        
+                        <a href="/tags/dll/" target="_blank">
+                            <span class="chip bg-color">dll</span>
                         </a>
                         
                     </div>
@@ -441,7 +435,7 @@ Makefile(必选)
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-17
+                    2020-09-28
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -455,14 +449,14 @@ Makefile(必选)
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    522
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    2 分
                 </div>
                 
                 
@@ -478,170 +472,202 @@ Makefile(必选)
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>[TOC]</p>
-<h1 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h1><p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200217214719.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200217214930.png" alt></p>
+                <h1 id="什么是dll"><a href="#什么是dll" class="headerlink" title="什么是dll"></a>什么是dll</h1><p><strong>DLL 是一个包含可由多个程序同时使用的代码和数据的库</strong>。 例如，在 Windows 操作系统中，Comdlg32 DLL 执行与对话框有关的常见函数。 因此，每个程序都可以使用该 DLL 中包含的功能来实现“打开”对话框。 这有助于促进代码重用和内存的有效使用。</p>
+<p>通过使用 DLL，程序可以实现模块化，由相对独立的组件组成。 例如，一个计帐程序可以按模块来销售。 可以在运行时将各个模块加载到主程序中（如果安装了相应模块）。 因为模块是彼此独立的，所以程序的加载速度更快，而且模块只在相应的功能被请求时才加载。<br><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2820_5117-ePfNriN6LshYu1SX.png" alt style="zoom:200%;"></p>
 <blockquote>
-<p><a href="https://lingxiankong.github.io/2014-01-06-linux-install.html" target="_blank" rel="noopener">https://lingxiankong.github.io/2014-01-06-linux-install.html</a></p>
+<p><a href="http://www.jyguagua.com/?p=3341" target="_blank" rel="noopener">http://www.jyguagua.com/?p=3341</a></p>
 </blockquote>
-<h1 id="Openwrt软件源码包的结构"><a href="#Openwrt软件源码包的结构" class="headerlink" title="Openwrt软件源码包的结构"></a>Openwrt软件源码包的结构</h1><ul>
-<li>Makefile(必选)<ul>
-<li>提供了下载、编译、安装的步骤</li>
-</ul>
+<h1 id="c-调用-lib的方法"><a href="#c-调用-lib的方法" class="headerlink" title="c++调用.lib的方法"></a>c++调用.lib的方法</h1><blockquote>
+<p><a href="https://developer.aliyun.com/article/247052" target="_blank" rel="noopener">https://developer.aliyun.com/article/247052</a></p>
+</blockquote>
+<h2 id="隐式加载"><a href="#隐式加载" class="headerlink" title="隐式加载"></a>隐式加载</h2><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2820_5318-2yZQmLjFLGJdgskw.png" alt style="zoom:200%;">
+
+<h2 id="显式加载"><a href="#显式加载" class="headerlink" title="显式加载"></a>显式加载</h2><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2820_5259-fB9XN8S3AYpdOzbU.png" alt style="zoom:200%;">
+
+<h1 id="函数的导出方式"><a href="#函数的导出方式" class="headerlink" title="函数的导出方式"></a>函数的导出方式</h1><h2 id="使用exten-“C”-C语言方式导出"><a href="#使用exten-“C”-C语言方式导出" class="headerlink" title="使用exten “C” C语言方式导出"></a>使用exten “C” C语言方式导出</h2><p><code>extern &quot;C&quot;</code>的作用是声明以c语言的格式编译当前代码：</p>
+<ul>
+<li><p>c语言没有函数重载</p>
 </li>
-<li>patches(可选)<ul>
-<li>补丁文件，用于对源码打补丁</li>
-</ul>
+<li><p>编译后的函数名若有参数以”xxx@数字”结尾，“数字”为所有参数占用的内存大小（4位对齐）；若无参数则结尾不含”@数字”</p>
 </li>
-<li>files(可选)<ul>
-<li>配置文件目录</li>
-</ul>
+<li><p>编译后的开头字符与调用约定<strong>cdecl(无开头字符)、</strong><strong>stdcall(以‘_’开头)</strong>、<strong>__fastcall(以‘@’开头)</strong>有关</p>
 </li>
 </ul>
-<h1 id="Makefile语法"><a href="#Makefile语法" class="headerlink" title="Makefile语法"></a>Makefile语法</h1><h2 id="引入文件"><a href="#引入文件" class="headerlink" title="引入文件"></a>引入文件</h2><p>OpenWrt使用三个Makefile的子文件，分别为：</p>
+<p>网络上大部分资料都是使用这种方式。</p>
+<h2 id="使用C-方式导出"><a href="#使用C-方式导出" class="headerlink" title="使用C++方式导出"></a>使用C++方式导出</h2><p>默认情况下，不加<code>extern &quot;C&quot;</code>,将使用C++方式导出；</p>
+<h1 id="Demo示例"><a href="#Demo示例" class="headerlink" title="Demo示例"></a>Demo示例</h1><pre class="line-numbers language-c++"><code class="language-c++">//calc.cpp
+#include "pch.h"
+#include <iostream>
+#include "calc.h"
+
+using namespace std;
+using namespace CalcDemo;
+
+Calc::Calc()
+{
+
+}
+
+Calc::~Calc()
+{
+
+}
+
+
+int Calc::add(int a, int b)
+{
+    return (a + b);
+}
+
+
+int sub(int a, int b)
+{
+    return (a - b);
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++"><code class="language-c++">//calc.h
+#pragma once
+
+#ifdef DLLEXPORTDEMO_EXPORTS
+#define DLLEXPORTDEMO_API __declspec(dllexport)
+#else
+#define DLLEXPORTDEMO_API
+#endif
+
+
+extern "C" DLLEXPORTDEMO_API int sub(int a, int b);
+
+
+namespace CalcDemo {
+    class DLLEXPORTDEMO_API Calc {
+        Calc();
+        virtual ~Calc();
+        int add(int a, int b);
+    };
+};<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="查看dll–使用Dependencies"><a href="#查看dll–使用Dependencies" class="headerlink" title="查看dll–使用Dependencies"></a>查看dll–使用Dependencies</h2><ul>
+<li><p>Dependencies github地址：</p>
 <blockquote>
-<p><strong>include $(TOPDIR)/rules.mk</strong></p>
-<p><strong>include $(INCLUDE_DIR)/kernel.mk</strong></p>
-<p><strong>include $(INCLUDE_DIR)/package.mk</strong></p>
-</blockquote>
-<p>由这些Makefile子文件确定软件包加入OpenWrt的方式和方法。$(TOPDIR)/rules.mk一般在Makefile的开头，$(INCLUDE_DIR)/kernel.mk文件对于软件包为内核时是不可缺少的，$(INCLUDE_DIR)/package.mk一般在软件包的基本信息完成后再引入。</p>
-<h2 id="示例Makefile"><a href="#示例Makefile" class="headerlink" title="示例Makefile"></a>示例Makefile</h2><pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">include</span> <span class="token variable">$</span><span class="token punctuation">(</span>TOPDIR<span class="token punctuation">)</span>/rules.mk
-
-PKG_NAME<span class="token operator">:=</span>bridge
-PKG_VERSION<span class="token operator">:=</span>1.0.6
-PKG_RELEASE<span class="token operator">:=</span>1
-
-PKG_BUILD_DIR<span class="token operator">:=</span><span class="token variable">$</span><span class="token punctuation">(</span>BUILD_DIR<span class="token punctuation">)</span>/bridge-utils-<span class="token variable">$</span><span class="token punctuation">(</span>PKG_VERSION<span class="token punctuation">)</span>
-PKG_SOURCE<span class="token operator">:=</span>bridge-utils-<span class="token variable">$</span><span class="token punctuation">(</span>PKG_VERSION<span class="token punctuation">)</span>.tar.gz
-PKG_SOURCE_URL<span class="token operator">:=</span><span class="token operator">@</span>SF/bridge
-PKG_MD5SUM<span class="token operator">:=</span>9b7dc52656f5cbec846a7ba3299f73bd
-PKG_CAT<span class="token operator">:=</span>zcat
-
-<span class="token keyword">include</span> <span class="token variable">$</span><span class="token punctuation">(</span>INCLUDE_DIR<span class="token punctuation">)</span>/package.mk
-
-<span class="token keyword">define</span> Package/bridge
-  SECTION<span class="token operator">:=</span>base
-  CATEGORY<span class="token operator">:=</span>Network
-  TITLE<span class="token operator">:=</span>Ethernet bridging configuration utility
-  <span class="token comment" spellcheck="true">#DESCRIPTION:=This variable is obsolete. use the Package/name/description define instead!</span>
-  URL<span class="token operator">:=</span>http<span class="token punctuation">:</span>//bridge.sourceforge.net/
-<span class="token keyword">endef</span>
-
-<span class="token keyword">define</span> Package/bridge/description
- Ethernet bridging configuration utility
- Manage ethernet bridging<span class="token punctuation">;</span> a way to connect networks together to
- form a larger network.
-<span class="token keyword">endef</span>
-
-<span class="token keyword">define</span> Build/Configure
-  <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">call</span> Build/Configure/Default,--with-linux-headers<span class="token operator">=</span><span class="token variable">$</span><span class="token punctuation">(</span>LINUX_DIR<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">endef</span>
-
-<span class="token keyword">define</span> Package/bridge/install
-  <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_DIR<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/usr/sbin
-  <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_BIN<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>PKG_BUILD_DIR<span class="token punctuation">)</span>/brctl/brctl <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/usr/sbin/
-<span class="token keyword">endef</span>
-
-<span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">eval</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">call</span> BuildPackage,bridge<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这是最为关键的<strong>BuildPackage</strong>宏。它是在<strong>$(INCLUDE_DIR)/package.mk</strong>文件里定义的。<strong>BuildPackage宏只要求一个参数，即要编译的软件包名</strong>，在本例中是“bridge”。所有其他信息都通过宏来获得，这提供了一种内在的简洁性。比如BuildPackage需要软件包的一大串描述信息，我们并不要向它传递冗长的参数，因为我们已经约定描述信息定义在DESCRIPTION宏，BuildPackage从里面读取就可以了。</p>
-<h2 id="软件包信息"><a href="#软件包信息" class="headerlink" title="软件包信息"></a>软件包信息</h2><p>软件包的信息均以PKG_开头，其意思和作用如下：</p>
-<ul>
-<li><strong>PKG_NAME</strong> -软件包的名字, 在 menuconfig 和 ipkg 显示</li>
-<li><strong>PKG_VERSION</strong> -软件包的版本，主干分支的版本正是我们要下载的</li>
-<li><strong>PKG_RELEASE</strong> -这个 makefile 的版本</li>
-<li><strong>PKG_BUILD_DIR</strong> -编译软件包的目录</li>
-<li><strong>PKG_SOURCE</strong> -要下载的软件包的名字，一般是由 PKG_NAME 和 PKG_VERSION 组成</li>
-<li><strong>PKG_SOURCE_URL</strong> -下载这个软件包的链接</li>
-<li><strong>PKG_MD5SUM</strong> -软件包的 MD5 值</li>
-<li><strong>PKG_CAT</strong> -解压软件包的方法 (zcat, bzcat, unzip)</li>
-<li><strong>PKG_BUILD_DEPENDS</strong> -<strong>需要预先构建的软件包，但只是在构建本软件包时，而不是运行的时候</strong>。它的语法和下面的DEPENDS一样。</li>
-</ul>
-<p>PKG_*变量定义了从何处下载这个软件包；@SF是表示从sourceforge网站下载的一个特殊关键字。md5sum用来检查从网上下载的软件包是否完好无损。PKG_BUILD_DIR定义了软件包源代码的解压路径。</p>
-<h2 id="BuildPackage相关的宏"><a href="#BuildPackage相关的宏" class="headerlink" title="BuildPackage相关的宏"></a>BuildPackage相关的宏</h2><p>应用程序的编译包以Package/开头。然后接着软件名，在Package定义中的软件名可以与软件包名不一样，而且可以多个定义。下面使用$(PKG_NAME)只是做一个标志，并非真正使用$(PKG_NAME)，如Package/$(PKG_NAME)。</p>
-<ul>
-<li><strong>SECTION</strong> 表示包的类型，预留。</li>
-<li><strong>CATRGORY</strong> 表示分类，在make menuconfig的菜单下将可以找到。</li>
-<li><strong>TITLE</strong> 用于软件包的简短描述。</li>
-<li><strong>DESCRIPTION</strong> 用于软件包的详细描述，<strong>已放弃使用</strong>。如果使用DESCRIPTION将会提示“error DESCRIPTION:= is obsolete, use Package/PKG_NAME/description”。</li>
-<li><strong>URL</strong> 表示软件包的下载位置。</li>
-<li><strong>MAINTAIER</strong> 表示维护者，选项。</li>
-<li><strong>DEPENDS</strong> 表示与其他软件的依赖。<strong>运行本软件依赖的其他包</strong>。如果存在多个依赖，则每个依赖需要用空格分开。依赖前使用+号表示默认为显示，即对象没有选中时也会显示，使用@则默认为不显示，即当依赖对象选中后才显示。</li>
-</ul>
-<blockquote>
-<p>在用户空间的应用程序软件包中没有内核驱动模块的AUTOLOAD参数。<strong>如果应用软件需要在boot时自动运行，则需要在/etc/init.d中增加相应的脚本文件。脚本文件需要START参数，说明在boot时的优先级，如果在boot过程启动后再关闭，则需要进一步设置STOP参数。如果STOP参数存在，其值必须大于START。脚本文件需要start()和stop()两个函数，start()是执行程序，stop()是关闭程序。</strong>关闭程序一般需要执行killall命令。<strong>由/etc/rc.d/S10boot知道，装载内核驱动模块的优先级为10，需要使用自己设计的内核驱动模块的程序其START的值必须大于10。同样由/etc/rc.d/S40network知道，使用网络通信的程序其START的值必须大于40</strong>。</p>
-</blockquote>
-<ul>
-<li><strong>Package/$(PKG_NAME)/conffiles</strong> 本包安装的配置文件，一行一个。如果文件结尾使用/，则表示为目录。用于备份配置文件说明，在sysupgrade命令执行时将会用到。</li>
-<li><strong>Package/$(PKG_NAME)/description</strong> 软件包的详细描述，取代前面提到的DESCRIPTION详细描述。</li>
-<li><strong>Build/Prepare</strong> 编译准备方法，对于网上下载的软件包不需要再描述。对于非网上下载或自行开发的软件包必须说明编译准备方法。一般的准备方法为：</li>
-</ul>
-<pre class="line-numbers language-ruby"><code class="language-ruby">define <span class="token constant">Build</span><span class="token operator">/</span><span class="token constant">Prepare</span>
-    mkdir <span class="token operator">-</span>p $<span class="token punctuation">(</span><span class="token constant">PKG_BUILD_DIR</span><span class="token punctuation">)</span>
-    $<span class="token punctuation">(</span><span class="token constant">CP</span><span class="token punctuation">)</span> <span class="token punctuation">.</span><span class="token operator">/</span>src<span class="token regex">/* $(PKG_BUILD_DIR)/</span>
-endef<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>按OpenWrt的习惯，一般把自己设计的程序全部在src目录下。</p>
-<ul>
-<li><strong>Build/Compile</strong> 编译方法，没有特别说明的可以不予以定义。如果不定义将默认使用编译方法Build/Compile/Default。<br> 自行开发的软件包可以考虑使用下面的定义。</li>
-</ul>
-<pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">define</span> Build/Compile
-    <span class="token variable">$</span><span class="token punctuation">(</span>MAKE<span class="token punctuation">)</span> -C <span class="token variable">$</span><span class="token punctuation">(</span>PKG_BUILD_DIR<span class="token punctuation">)</span> \
-    <span class="token variable">$</span><span class="token punctuation">(</span>TARGET_CONFIGURE_OPTS<span class="token punctuation">)</span> CFLAGS<span class="token operator">=</span><span class="token string">"$(TARGET_CFLAGS) -I $(LINUX_DIR)/include"</span>
-<span class="token keyword">endef</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><strong>Package/$(PKG_NAME)/install</strong> 软件包的安装方法，包括一系列拷贝编译好的文件到指定位置。<strong>调用时会带一个参数，就是嵌入式系统的镜像文件系统目录</strong>，因此<strong>$(1)表示嵌入式系统的镜像目录</strong>。一般可以采用下面的方法：</li>
-</ul>
-<pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">define</span> Package/<span class="token variable">$</span><span class="token punctuation">(</span>PKG_NAME<span class="token punctuation">)</span>/install
-    <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_DIR<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/usr/bin
-    <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_BIN<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>PKG_BUILD_DIR<span class="token punctuation">)</span>/<span class="token variable">$</span><span class="token punctuation">(</span>PKG_NAME<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/usr/bin/
-<span class="token keyword">endef</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>INSTALL_DIR、INSTALL_BIN在$(TOPDIR)/rules.mk文件定义，所以本Makefile必须引入$(TOPDIR)/rules.mk文件。<br> <strong>INSTALL_DIR:=install -d -m0755</strong> 意思是创建所属用户可读写和执行，其他用户可读可执行的目录。<br> <strong>INSTALL_BIN:=install -m0755</strong> 意思是编译好的文件存放到镜像文件目录。<br> 如果用户空间的应用软件在boot时要自动运行，则需要在安装方法说明中增加自动运行的脚本文件安装和配置文件安装方法。<br> 例如：</p>
-<pre class="line-numbers language-makefile"><code class="language-makefile"><span class="token keyword">define</span> Package/mountd/install
-    <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_DIR<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/sbin/ <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/etc/config/ <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/etc/init.d/
-    <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_BIN<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>PKG_BUILD_DIR<span class="token punctuation">)</span>/mountd <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/sbin/
-    <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_DATA<span class="token punctuation">)</span> ./files/mountd.config <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/etc/config/mountd
-    <span class="token variable">$</span><span class="token punctuation">(</span>INSTALL_BIN<span class="token punctuation">)</span> ./files/mountd.init <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>/etc/init.d/mountd
-<span class="token keyword">endef</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>安装文件放在files子目录下，不要与源代码文件目录src混在一起，以提高可读性。使用清晰的文件扩展名，更方便安装识别文件。</p>
-<ul>
-<li><strong>Package/$(PKG_NAME)/preinst</strong> 软件包安装前处理方法，使用脚本语言，因此定义的第一行需要下面的格式<br> <code>#!/bin/sh</code><br> 调用时带入的参数为嵌入式系统的镜像目录。</li>
-<li><strong>Package/$(PKG_NAME)/postinst</strong> 软件包安装后处理方法，使用脚本语言。</li>
-<li><strong>Package/$(PKG_NAME)/prerm</strong> 软件包删除前处理方法，使用脚本语言。</li>
-<li><strong>Package/$(PKG_NAME)/postrm</strong> 软件包删除后处理方法，使用脚本语言。</li>
-</ul>
-<p><strong>注意：</strong>对于所有在pre/post, install/removal脚本中使用的变量，<strong>都应该使用”$$“代替”$“</strong>。这是告诉make暂时不要解析这个变量，而是把它当成普通字符串以及用”$“代替”$$“</p>
-<h2 id="内核驱动模块包定义"><a href="#内核驱动模块包定义" class="headerlink" title="内核驱动模块包定义"></a>内核驱动模块包定义</h2><p>Linux分为内核空间和用户空间。开发者开发的内核部分可以直接加入Linux的Kernel程序，也可以生成内核模块以便需要时装入内核。OpenWrt一般希望开发者生成内核模块，在Linux启动后自动装载或手工使用insmod命令装载。内核模块使用KernelPackage开头，其他与一般应用软件包基本相同。<br> 在内核驱动模块定义中增加了：</p>
-<ul>
-<li><strong>SUBMENU</strong> 表示子菜单位置，在$(INCLUDE)/kernel.mk对内核模块定义了CATEGORY为kernel modules，所以内核模块在menuconfig中的主菜单为kernel modules，然后有下一级子菜单$(SUBMENU)。在子菜单下可以看到以kmod-$(PKG_NAME)项目。</li>
-<li><strong>DEFAULT</strong> 表示直接编入内核或产生内核模块，y表示直接编入内核，m表示产生内核模块。</li>
-<li><strong>AUTOLOAD</strong> 表示自动装入内核，一般表示方法为：<br> <code>AUTOLOAD:=$(call AutoLoad, $(PRIORITY),$(AUTOLOAD_MODS))</code><br> AutoLoad的第一个参数$(PRIORITY)为优先级，01为最优先，99为最后装载。有关自动装载可以在/etc/modules.d目录下看到，第二个参数$(AUTOLOAD_MODS)模块名，每个模块名以空格符分隔。即可同时装载多个内核模块。<br> 在开发过程最好不要使用自动装载，经过严格调试后再使用，可以减轻调试的工作量。</li>
-</ul>
-<h2 id="使用定义"><a href="#使用定义" class="headerlink" title="使用定义"></a>使用定义</h2><p>完成前面定义后，必须使用eval函数实现各种定义。其格式为：<br> 对于一般应用软件包<br> <code>$(eval $(call Package, $(PKG_NAME)))</code><br> 或对于内核驱动模块<br> <code>$(eval $(call KernelPackage, $(PKG_NAME)))</code><br> 如果一个软件包有多个程序，例如：一个应用程序有自己的内核驱动模块，上面使用PKG_NAME需要灵活变通。eval函数可以设计多个。也可以当成多个软件包处理。</p>
-<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><blockquote>
-<p><a href="https://www.jianshu.com/p/21c8937ac7ea" target="_blank" rel="noopener">https://www.jianshu.com/p/21c8937ac7ea</a></p>
-<p><a href="https://openwrt.org/zh-cn/doc/devel/packages" target="_blank" rel="noopener">https://openwrt.org/zh-cn/doc/devel/packages</a></p>
-</blockquote>
-<h1 id="开机自启动配置"><a href="#开机自启动配置" class="headerlink" title="开机自启动配置"></a>开机自启动配置</h1><ul>
-<li><p>创建文件夹</p>
-<pre class="line-numbers language-shell"><code class="language-shell">mkdir -p package/helloworld/files
-cd package/helloworld/files
-touch helloworld<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>编写脚本<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218113811.png" alt></p>
-</li>
-<li><p>修改helloworld 目录下的Makefile<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218113854.png" alt></p>
-</li>
-</ul>
-<h1 id="重复安装保留配置文件"><a href="#重复安装保留配置文件" class="headerlink" title="重复安装保留配置文件"></a>重复安装保留配置文件</h1><ul>
-<li><p>问题<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218114051.png" alt></p>
-</li>
-<li><p>解决方法<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200218114157.png" alt></p>
-</li>
-<li><p>引用</p>
-<blockquote>
-<p><a href="https://stackoverflow.com/questions/34512804/how-to-keep-config-after-reinstall-ipk-on-openwrt" target="_blank" rel="noopener">https://stackoverflow.com/questions/34512804/how-to-keep-config-after-reinstall-ipk-on-openwrt</a></p>
+<p><a href="https://github.com/lucasg/Dependencies" target="_blank" rel="noopener">https://github.com/lucasg/Dependencies</a></p>
 </blockquote>
 </li>
+<li><p>查看dll</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2822_0852-Qb9XbCctUoaIBYO6.png" alt style="zoom:200%;">
+
+</li>
 </ul>
+<h1 id="C-显示调用dll"><a href="#C-显示调用dll" class="headerlink" title="C++ 显示调用dll"></a>C++ 显示调用dll</h1><ul>
+<li>demo:</li>
+</ul>
+<pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <Windows.h>
+
+using namespace std;
+
+typedef int (*run_sub_t)(int a, int b);
+typedef int (*run_add_t)(int a, int b);
+
+
+
+int main()
+{
+    std::cout << "Hello World!\n";
+
+    HINSTANCE hdll;
+    run_sub_t runsub = NULL;
+    run_add_t runadd = NULL;
+
+
+    hdll = LoadLibrary(TEXT("dll_export_demo.dll"));
+    if (NULL == hdll) {
+        cout << "LoadLibrary fail." << endl;
+        goto exit;
+    }
+
+    runsub = (run_sub_t)GetProcAddress(hdll, "sub");
+    if (NULL == runsub) {
+        cout << "get run sub process address fail." << endl;
+        goto exit;
+    }
+    cout << "sub(1, 2) = 1-3 = " << runsub(1, 3) << endl;
+
+    runadd = (run_add_t)GetProcAddress(hdll, "add");
+    if (NULL == runadd) {
+        cout << "get run add process address fail." << endl;
+        goto exit;
+    }
+
+    cout << "add(5, 6) = " << runadd(5, 6) << endl;
+
+    if (NULL != hdll) {
+        FreeLibrary(hdll);
+    }
+
+
+    return 0;
+
+exit:
+    if (NULL != hdll) {
+        FreeLibrary(hdll);
+    }
+
+    return -1;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>编译运行报错</li>
+</ul>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2822_3340-so8G8jBur7XNQcZq.png" alt style="zoom:200%;">
+
+<p>因为c++函数名导出方式，add()函数的函数名不是叫add，所有无法找到这个函数。</p>
+<p>使用<strong>Dependencies</strong>打开dll文件，查看add()函数的c++导出函数名，修改重新编译运行：</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2822_3723-0TFMMmbItJoFJ8wI.png" alt style="zoom:200%;">
+
+<p>修改之后，函数add()可以找到了，但是运行抛异常了；分析之后发现，是因为<strong>C++所有的成员函数中都有一个隐含的this指针</strong>，所以此处add应该有三个参数，直接传递两个参数，是非法传参。</p>
+<p>解决方法：将add()函数定义为static函数：</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2822_5254-yxcY5SXhsROBjlkq.png" alt style="zoom:200%;">
+
+<p>编译运行，再次报错：找不到add()函数：</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2822_5349-YpPgpH4GFLN6xDVY.png" alt style="zoom:200%;">
+
+<p>因为修改了函数为static，所有c++导出的add()函数名发生了变化，修改后重新编译正常：</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2822_5542-O3RYIeZe8h7t3HhW.png" alt style="zoom:200%;">
+
+<p>这样的函数名使用起来总是有些不方便，要使用和代码相同的常规的函数名，一般有两种方法：</p>
+<ul>
+<li>声明为<code>exten &quot;C&quot;</code>，表示使用C语言方式编译，但是对于一些函数需要c++特性，比如C++的变量类型，C++的重载等，这样就没法实现；</li>
+<li>链接时使用def文件，指定函数的名字；</li>
+</ul>
+<h1 id="使用def文件生成常规名字的dll"><a href="#使用def文件生成常规名字的dll" class="headerlink" title="使用def文件生成常规名字的dll"></a>使用def文件生成常规名字的dll</h1><pre class="line-numbers language-c++"><code class="language-c++">LIBRARY  dll_export_demo
+EXPORTS
+add<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2823_0551-UK20Igu9aDoXxzYD.png" alt style="zoom:200%;">
+
+
+
+<p>vs链接器配置：</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2823_0720-DMKR98LNw5BPt0FK.png" alt style="zoom:200%;">
+
+
+
+<p>重新编译，查看dll:</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2823_1015-TiJLbbzfSnV6ivqv.png" alt style="zoom:200%;">
+
+<p>直接使用add函数名重新编译运行，工作正常：</p>
+<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/2823_1203-clG8cGP0TpGatNpX.png" alt style="zoom:200%;">
+
+
+
+
+
+
+
+<h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
+<p><a href="https://www.cnblogs.com/houkai/archive/2013/06/05/3119513.html" target="_blank" rel="noopener">https://www.cnblogs.com/houkai/archive/2013/06/05/3119513.html</a></p>
+<p><a href="https://blog.csdn.net/lwwl12/article/details/86655488" target="_blank" rel="noopener">https://blog.csdn.net/lwwl12/article/details/86655488</a></p>
+<p><a href="https://www.codeproject.com/Articles/28969/HowTo-Export-C-classes-from-a-DLL" target="_blank" rel="noopener">https://www.codeproject.com/Articles/28969/HowTo-Export-C-classes-from-a-DLL</a></p>
+<p><a href="https://docs.microsoft.com/en-us/cpp/error-messages/compiler-errors-1/fatal-error-c1010?view=vs-2019" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cpp/error-messages/compiler-errors-1/fatal-error-c1010?view=vs-2019</a></p>
+</blockquote>
 
             </div>
             <hr />
@@ -676,9 +702,9 @@ touch helloworld<span aria-hidden="true" class="line-numbers-rows"><span></span>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Openwrt软件包创建》
+                    《C++如何导出dll》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/a2e5f92e/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/41052deb/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Kang
             </a> 采用
@@ -719,7 +745,7 @@ touch helloworld<span aria-hidden="true" class="line-numbers-rows"><span></span>
         repo: 'littlekang-code.github.io',
         owner: 'littlekang-code',
         admin: "littlekang-code",
-        id: 'article/a2e5f92e/',
+        id: 'article/41052deb/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -740,32 +766,97 @@ touch helloworld<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/b3de8d7/">
+                <a href="/article/41052deb/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="固件加头部信息">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="C++如何导出dll">
                         
-                        <span class="card-title">固件加头部信息</span>
+                        <span class="card-title">C++如何导出dll</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            参考格式固件的头部信息，可以是多种格式，一般可能更多的是二进制数据格式，考虑到后期方便扩展，这里选择使用json格式。
-ABCD{
-    &quot;magic&quot;:&quot;device_xx&quot;,
-    &quot
+                            什么是dllDLL 是一个包含可由多个程序同时使用的代码和数据的库。 例如，在 Windows 操作系统中，Comdlg32 DLL 执行与对话框有关的常见函数。 因此，每个程序都可以使用该 DLL 中包含的功能来实现“打开”对话框。 这有
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-09
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/c/" target="_blank">
+                        <span class="chip bg-color">c++</span>
+                    </a>
+                    
+                    <a href="/tags/dll/" target="_blank">
+                        <span class="chip bg-color">dll</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/ca546b13/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="omv新建用户ssh登录问题">
+                        
+                        <span class="card-title">omv新建用户ssh登录问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            新建用户
+方法一：使用dash控制面板 
+
+
+
+
+
+方法二；使用useradd命令useradd -s /bin/bash pub
+
+
+bash和profile相关知识
+引用地址：
+
+https://wido.me/sunteya/unde
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -781,61 +872,16 @@ ABCD{
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/" target="_blank">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/nas/" target="_blank">
+                        <span class="chip bg-color">nas</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/article/32c0b2ae/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Typoro PicGo MarkDown协同工作">
-                        
-                        <span class="card-title">Typoro PicGo MarkDown协同工作</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Tyora简介
-官网：https://typora.io/
-
-Typora 是一款简单、高效而且非常优雅的 Markdown 编辑器，它提供了一种所见即所得的全新的 Markdown 写作体验。
-Typora 把源码编辑和效果预览两者合二为
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/高效/" class="post-category" target="_blank">
-                                    高效
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
+                    <a href="/tags/omv/" target="_blank">
+                        <span class="chip bg-color">omv</span>
+                    </a>
                     
-                    <a href="/tags/tools/" target="_blank">
-                        <span class="chip bg-color">tools</span>
+                    <a href="/tags/ssh/" target="_blank">
+                        <span class="chip bg-color">ssh</span>
                     </a>
                     
                 </div>
