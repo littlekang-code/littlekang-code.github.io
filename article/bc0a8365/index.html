@@ -4,15 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Typoro PicGo MarkDown协同工作, 行走的康康">
+    <meta name="keywords" content="CMake学习笔记, 行走的康康">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="Tyora简介
-官网：https://typora.io/
-
-Typora 是一款简单、高效而且非常优雅的 Markdown 编辑器，它提供了一种所见即所得的全新的 Markdown 写作体验。
-Typora 把源码编辑和效果预览两者合二为">
+    <meta name="description" content="什么是CMake你或许听过好几种 Make 工具，例如 GNU Make ，QT 的 qmake ，微软的 MS nmake，BSD Make（pmake），Makepp，等等。这些 Make 工具遵循着不同的规范和标准，所执行的 Make">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +16,7 @@ Typora 把源码编辑和效果预览两者合二为">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Typoro PicGo MarkDown协同工作 | 行走的康康</title>
+    <title>CMake学习笔记 | 行走的康康</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -294,13 +290,13 @@ Typora 把源码编辑和效果预览两者合二为">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Typoro PicGo MarkDown协同工作
+                        CMake学习笔记
                     </div>
                 </div>
             </div>
@@ -411,8 +407,12 @@ Typora 把源码编辑和效果预览两者合二为">
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/tools/" target="_blank">
-                            <span class="chip bg-color">tools</span>
+                        <a href="/tags/CMake/" target="_blank">
+                            <span class="chip bg-color">CMake</span>
+                        </a>
+                        
+                        <a href="/tags/Makefile/" target="_blank">
+                            <span class="chip bg-color">Makefile</span>
                         </a>
                         
                     </div>
@@ -423,8 +423,8 @@ Typora 把源码编辑和效果预览两者合二为">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/高效/" class="post-category" target="_blank">
-                            高效
+                        <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                            学习笔记
                         </a>
                         
                     </div>
@@ -435,7 +435,7 @@ Typora 把源码编辑和效果预览两者合二为">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-13
+                    2021-02-17
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -449,14 +449,14 @@ Typora 把源码编辑和效果预览两者合二为">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    684
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    6 分
                 </div>
                 
                 
@@ -472,63 +472,81 @@ Typora 把源码编辑和效果预览两者合二为">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Tyora简介"><a href="#Tyora简介" class="headerlink" title="Tyora简介"></a>Tyora简介</h1><ul>
-<li><p>官网：<a href="https://typora.io/" target="_blank" rel="noopener">https://typora.io/</a></p>
-</li>
-<li><p>Typora 是一款简单、高效而且非常优雅的 Markdown 编辑器，它提供了一种所见即所得的全新的 Markdown 写作体验。</p>
-<p>Typora 把源码编辑和效果预览两者合二为一，在输入 Markdown 代码的时候即时生成预览效果。</p>
-<p>Typora 是目前互联网上最受欢迎的 Markdown 编辑器之一。</p>
-</li>
-<li><p>Tyora快捷键</p>
+                <h1 id="什么是CMake"><a href="#什么是CMake" class="headerlink" title="什么是CMake"></a>什么是CMake</h1><p>你或许听过好几种 Make 工具，例如 <a href="https://www.hahack.com/wiki/tools-makefile.html" target="_blank" rel="noopener">GNU Make</a> ，QT 的 <a href="http://qt-project.org/doc/qt-4.8/qmake-manual.html" target="_blank" rel="noopener">qmake</a> ，微软的 <a href="http://msdn.microsoft.com/en-us/library/ms930369.aspx" target="_blank" rel="noopener">MS nmake</a>，BSD Make（<a href="http://www.freebsd.org/doc/en/books/pmake/" target="_blank" rel="noopener">pmake</a>），<a href="http://makepp.sourceforge.net/" target="_blank" rel="noopener">Makepp</a>，等等。这些 Make 工具遵循着不同的规范和标准，所执行的 Makefile 格式也千差万别。这样就带来了一个严峻的问题：如果软件想跨平台，必须要保证能够在不同平台编译。而如果使用上面的 Make 工具，就得为每一种标准写一次 Makefile ，这将是一件让人抓狂的工作。<strong>CMake 就是针对上面问题所设计的工具：它首先允许开发者编写一种平台无关的 CMakeList.txt 文件来定制整个编译流程，然后再根据目标用户的平台进一步生成所需的本地化 Makefile 和工程文件</strong>，如 Unix 的 Makefile 或 Windows 的 Visual Studio 工程。从而做到“Write once, run everywhere”。显然，CMake 是一个比上述几种 make 更高级的编译配置工具。一些使用 CMake 作为项目架构系统的知名开源项目有 <a href="http://www.vtk.org/" target="_blank" rel="noopener">VTK</a>、<a href="http://www.itk.org/" target="_blank" rel="noopener">ITK</a>、<a href="http://kde.org/" target="_blank" rel="noopener">KDE</a>、<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/modules/core/doc/intro.html" target="_blank" rel="noopener">OpenCV</a>、<a href="http://www.openscenegraph.org/" target="_blank" rel="noopener">OSG</a> 等 <sup class="footnote-ref" style="box-sizing: border-box; font-size: 12.6px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;"><a href="https://www.hahack.com/codes/cmake/#fn1" target="_blank" rel="noopener">[1]</a></sup>。</p>
+<p>在 linux 平台下使用 CMake 生成 Makefile 并编译的流程如下：</p>
+<ol>
+<li>编写 CMake 配置文件 CMakeLists.txt 。</li>
+<li>执行命令 <code>cmake PATH</code> 或者 <code>ccmake PATH</code> 生成 Makefile（<code>ccmake</code> 和 <code>cmake</code> 的区别在于前者提供了一个交互式的界面）。其中， <code>PATH</code> 是 CMakeLists.txt 所在的目录。</li>
+<li>使用 <code>make</code> 命令进行编译。</li>
+</ol>
+<p>本文将从实例入手，一步步讲解 CMake 的常见用法，文中所有的实例代码可以在<a href="https://github.com/wzpan/cmake-demo" target="_blank" rel="noopener">这里</a>找到。如果你读完仍觉得意犹未尽，可以继续学习我在文章末尾提供的其他资源。</p>
+<h1 id="简单实例-helloworld"><a href="#简单实例-helloworld" class="headerlink" title="简单实例-helloworld"></a>简单实例-helloworld</h1><ul>
+<li>工程文件结构：</li>
+</ul>
+<img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1319_0944-SWdRVTzlfwfZGN4V.jpg" style="zoom:150%;"> 
+
 <ul>
-<li>段落<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200213002205.png" alt></li>
-<li>格式<br><img src="https://cdn.jsdelivr.net/gh/littlekang-code/kangimages/imgs/20200213002455.png" alt></li>
+<li>src源码</li>
 </ul>
-</li>
-</ul>
-<h1 id="Pandoc文档格式转化"><a href="#Pandoc文档格式转化" class="headerlink" title="Pandoc文档格式转化"></a>Pandoc文档格式转化</h1><ul>
-<li><p>官网 <a href="https://pandoc.org/" target="_blank" rel="noopener">https://pandoc.org/</a></p>
-</li>
-<li><p>简介：</p>
-</li>
-<li><p><em>Pandoc*</em>是一个标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”。<br>Typora 的文件导入/导出功能使用 Pandoc 把 Markdown 源码转换成不同的文件格式，所以我们如果想使用文件导入/导出功能，必须先安装 Pandoc。<br>如果不安装 Pandoc，Typora 只支持导出 HTML 和 PDF 格式的文件。<br>如果安装了 Pandoc ：<br>Typora 支持的导入文件格式: .docx, .latex, .tex, .ltx, .rst, .rest, .org, .wiki, .dokuwiki, .textile, .opml, .epub.<br>Typora 支持的导出文件格式 : HTML, PDF, Docx, odt, rtf, Epub, LaTeX, Media Wiki,Image.</p>
-</li>
-<li><p>安装方式：<br>STEP 1. 打开下载页面：<a href="https://github.com/jgm/pandoc/releases/latest" target="_blank" rel="noopener">https://github.com/jgm/pandoc/releases/latest</a><br>STEP 2. 下载最新的安装包：pandoc-版本号.msi<br>STEP 3. 双击后按照提示一步步安装</p>
-</li>
-</ul>
-<h1 id="PicGo图床"><a href="#PicGo图床" class="headerlink" title="PicGo图床"></a>PicGo图床</h1><ul>
-<li><p>下载地址：<a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">https://github.com/Molunerfinn/PicGo/releases</a></p>
-</li>
-<li><p>简介：<br>PicGo: 一个用于快速上传图片并获取图片URL链接的工具<br>PicGo 本体支持如下图床：</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello world\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>微博图床 v1.0 微博图床从 2019 年 4 月开始进行防盗链，不建议继续使用</li>
-<li>七牛图床 v1.0</li>
-<li>腾讯云 COS v4\v5版本 v1.1 &amp; v1.5.0</li>
-<li>又拍云 v1.2.0</li>
-<li>GitHub v1.5.0</li>
-<li>SM.MS v1.5.1 由于官方不再支持V1版本，暂时请使用smms-user插件</li>
-<li>阿里云 OSS v1.6.0</li>
-<li>Imgur v1.6.0</li>
+<li>CMakeLists</li>
 </ul>
-</li>
-<li><p>特色功能</p>
+<pre class="line-numbers language-cmake"><code class="language-cmake"># CMake 最低版本号要求
+cmake_minimum_required(VERSION 3.0)
+
+# 项目信息
+project(demo)
+
+# 指定生成目标
+add_executable(main main.c)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>支持拖拽图片上传</li>
-<li>支持快捷键上传剪贴板里第一张图片</li>
-<li>Windows和macOS支持右键图片文件通过菜单上传 (v2.1.0+)</li>
-<li>上传图片后自动复制链接到剪贴板</li>
-<li>支持自定义复制到剪贴板的链接格式</li>
-<li>支持修改快捷键，默认快速上传快捷键：<code>command+shift+p</code>（macOS）| <code>control+shift+p</code>（Windows\Linux)</li>
-<li>支持插件系统，已有插件支持Gitee、青云等第三方图床<ul>
-<li>更多第三方插件以及使用了 PicGo 底层的应用可以在 <a href="https://github.com/PicGo/Awesome-PicGo" target="_blank" rel="noopener">Awesome-PicGo</a> 找到。欢迎贡献！</li>
+<li>编译<br>创建build目录，以便将cmake生成文件与源代码分开；<br>在build目录下执行<code>cmake ../</code></li>
 </ul>
-</li>
-<li>支持通过发送HTTP请求调用 PicGo 上传（v2.2.0+)</li>
+<h1 id="CMake交叉编译"><a href="#CMake交叉编译" class="headerlink" title="CMake交叉编译"></a>CMake交叉编译</h1><p><strong>对于交叉编译，CMake并不知道目标系统是什么，所以需要设置一些CMake变量来告知CMak</strong>e</p>
+<ul>
+<li>CMAKE_SYSTEM_NAME：即目标系统名，这里是Linux</li>
+<li>CMAKE_SYSTEM_PROCESSOR ：目标系统的处理器名</li>
 </ul>
-</li>
+<p>对于工具链，则是通过下面2个变量来定位，</p>
+<ul>
+<li>CMAKE_C_COMPILER：C编译器的可执行文件名称</li>
+<li>CMAKE_CXX_COMPILER：C++编译器的可执行文件名称</li>
 </ul>
+<p>这些变量可以在调用CMake时通过命令行传递，但是这种做法容易出错，而且用起来不方便，所以CMake提供了工具链文件的方式来传递这些变量信息</p>
+<p>这里编译为openwrt mips架构：</p>
+<pre class="line-numbers language-cmake"><code class="language-cmake">#openwrt_linux_setup.cmake
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR mips)
+
+set(tools /opt/openwrt_mt7688_gcc-4.8/gcc-4.8)
+set(CMAKE_C_COMPILER ${tools}/bin/mipsel-openwrt-linux-gcc)
+set(CMAKE_CXX_COMPILER ${tools}/bin/mipsel-openwrt-linux-g++)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="交叉编译配置"><a href="#交叉编译配置" class="headerlink" title="交叉编译配置"></a>交叉编译配置</h1><p>CMake给交叉编译预留了一个很好的变量即<strong>CMAKE_TOOLCHAIN_FILE</strong>,它定义了一个文件的路径，这个文件即toolChain,里面set了一系列你需要改变的变量和属性，包括C_COMPILER,CXX_COMPILER,如果用Qt的话需要更改QT_QMAKE_EXECUTABLE以及如果用BOOST的话需要更改的BOOST_ROOT(具体查看相关Findxxx.cmake里面指定的路径)。CMake为了不让用户每次交叉编译都要重新输入这些命令，因此它带来toolChain机制，简而言之就是一个cmake脚本，内嵌了你需要改变以及需要set的所有交叉环境的设置。</p>
+<p>这里面也牵扯了一些相关的变量设置,在这里简单介绍下几个比较重要的</p>
+<p>1. <strong>CMAKE_SYSTEM_NAME</strong>: 即你目标机target所在的操作系统名称，比如ARM或者Linux你就需要写”Linux”, 如果Windows平台你就写”Windows”,如果你的嵌入式平台没有相关OS你即需要写成”Generic”, <strong>只有当CMAKE_SYSTEM_NAME这个变量被设置了，CMake才认为此时正在交叉编译</strong>，它会额外设置一个变量CMAKE_CROSSCOMPILING为TRUE.</p>
+<p>2. <strong>CMAKE_C_COMPILER</strong>: 顾名思义，即C语言编译器，<strong>这里可以将变量设置成完整路径或者文件名</strong>，设置成完整路径有一个好处就是CMake会去这个路径下去寻找编译相关的其他工具比如linker,binutils等，如果你写的文件名带有arm-elf等等前缀，CMake会识别到并且去寻找相关的交叉编译器。</p>
+<p>3. <strong>CMAKE_CXX_COMPILER</strong>: 同上，此时代表的是C++编译器。</p>
+<p>4. <strong>CMAKE_FIND_ROOT_PATH</strong>: <strong>代表了一系列的相关文件夹路径的根路径的变更</strong>，比如你设置了/opt/arm/,所有的Find_xxx.cmake都会优先根据这个路径下的/usr/lib,/lib等进行查找，然后才会去你自己的/usr/lib和/lib进行查找，如果你有一些库是不被包含在/opt/arm里面的，你也可以显示指定多个值给CMAKE_FIND_ROOT_PATH,比如<code>set(CMAKE_FIND_ROOT_PATH /opt/arm /opt/inst)</code></p>
+<p>5.  <strong>CMAKE_FIND_ROOT_PATH_MODE_PROGRAM</strong>: 对FIND_PROGRAM()起作用，有三种取值，<strong>NEVER,ONLY,BOTH</strong>,第一个表示不在你CMAKE_FIND_ROOT_PATH下进行查找，第二个表示只在这个路径下查找，第三个表示先查找这个路径，再查找全局路径，对于这个变量来说，<strong>一般都是调用宿主机的程序，所以一般都设置成NEVER</strong></p>
+<p>6. <strong>CMAKE_FIND_ROOT_PATH_MODE_LIBRARY</strong>: 对FIND_LIBRARY()起作用，表示在链接的时候的库的相关选项，<strong>因此这里需要设置成ONLY来保证我们的库是在交叉环境中找的</strong>.</p>
+<p>7. <strong>CMAKE_FIND_ROOT_PATH_MODE_INCLUDE</strong>: 对FIND_PATH()和FIND_FILE()起作用，<strong>一般来说也是ONLY</strong>,如果你想改变，一般也是在相关的FIND命令中增加option来改变局部设置，有NO_CMAKE_FIND_ROOT_PATH,ONLY_CMAKE_FIND_ROOT_PATH,BOTH_CMAKE_FIND_ROOT_PATH</p>
+<p>8. <strong>BOOST_ROOT</strong>： 对于需要boost库的用户来说，相关的boost库路径配置也需要设置，因此这里的路径即ARM下的boost路径，里面有include和lib。</p>
+<p>9. <strong>QT_QMAKE_EXECUTABLE</strong>: 对于Qt用户来说，需要更改相关的qmake命令切换成嵌入式版本，因此这里需要指定成相应的qmake路径（指定到qmake本身）</p>
+<h1 id="同一目录，多个源文件"><a href="#同一目录，多个源文件" class="headerlink" title="同一目录，多个源文件"></a>同一目录，多个源文件</h1><p><code>aux_source_directory</code> 命令，该命令会查找指定目录下的所有源文件，然后将结果存进指定变量名。其语法如下：</p>
+<pre><code>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</code></pre><p>示例：<br><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1322_3836-mzgMadNOWZqvuOiY.jpg" alt> </p>
+<h1 id="多个目录，多个源文件"><a href="#多个目录，多个源文件" class="headerlink" title="多个目录，多个源文件"></a>多个目录，多个源文件</h1><p>对于这种情况，需要分别在项目<strong>根目录和子目录目录里各编写一个 CMakeLists.txt</strong> 文件。为了方便，我们可以先将子目录里的文件编译成静态库再由 main 函数调用；</p>
+<p>示例：<br><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1322_4206-UAFiDDl6tzpNYGRq.jpg" alt> </p>
+<p><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1322_4336-xXV3JFlLStYyNXVy.jpg" alt> </p>
 <h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
-<p><a href="https://www.jianshu.com/p/45ff441ac0d6" target="_blank" rel="noopener">Typora：简单高效的 Markdown 编辑器</a><br><a href="https://www.jianshu.com/p/a0bf28d7f2fd" target="_blank" rel="noopener">Typora + PicGo MarkDown完美组合</a><br><a href="https://www.jianshu.com/p/44c8aaa9cda1" target="_blank" rel="noopener">Typora - 不要太棒的Markdown编辑器</a><br><a href="https://www.cnblogs.com/lc1203/p/ac5d44992d9c5f84bf3383d15aff40c2.html" target="_blank" rel="noopener">高效且优雅的笔记记录：为知笔记+Typora+图床</a><br><a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">Picgo github readme</a></p>
+<p><a href="https://www.hahack.com/codes/cmake/" target="_blank" rel="noopener">CMake 入门实战</a><br><a href="https://blog.csdn.net/weicao1990/article/details/51149381" target="_blank" rel="noopener">CMake交叉编译配置</a><br><a href="https://blog.csdn.net/whahu1989/article/details/104114515" target="_blank" rel="noopener">使用CMake交叉编译Arm Linux程序</a></p>
 </blockquote>
 
             </div>
@@ -564,9 +582,9 @@ Typora 把源码编辑和效果预览两者合二为">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Typoro PicGo MarkDown协同工作》
+                    《CMake学习笔记》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/32c0b2ae/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/article/bc0a8365/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Kang
             </a> 采用
@@ -607,7 +625,7 @@ Typora 把源码编辑和效果预览两者合二为">
         repo: 'littlekang-code.github.io',
         owner: 'littlekang-code',
         admin: "littlekang-code",
-        id: 'article/32c0b2ae/',
+        id: 'article/bc0a8365/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -628,39 +646,84 @@ Typora 把源码编辑和效果预览两者合二为">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/a2e5f92e/">
+                <a href="/article/bc0a8365/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Openwrt软件包创建">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CMake学习笔记">
                         
-                        <span class="card-title">Openwrt软件包创建</span>
+                        <span class="card-title">CMake学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            [TOC]
-相关知识
-
-
-https://lingxiankong.github.io/2014-01-06-linux-install.html
-
-Openwrt软件源码包的结构
-Makefile(必选)
-提供了下载、编译、安装的步骤
-
-
+                            什么是CMake你或许听过好几种 Make 工具，例如 GNU Make ，QT 的 qmake ，微软的 MS nmake，BSD Make（pmake），Makepp，等等。这些 Make 工具遵循着不同的规范和标准，所执行的 Make
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-17
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CMake/" target="_blank">
+                        <span class="chip bg-color">CMake</span>
+                    </a>
+                    
+                    <a href="/tags/Makefile/" target="_blank">
+                        <span class="chip bg-color">Makefile</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/41052deb/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="C++如何导出dll">
+                        
+                        <span class="card-title">C++如何导出dll</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            什么是dllDLL 是一个包含可由多个程序同时使用的代码和数据的库。 例如，在 Windows 操作系统中，Comdlg32 DLL 执行与对话框有关的常见函数。 因此，每个程序都可以使用该 DLL 中包含的功能来实现“打开”对话框。 这有
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -676,58 +739,12 @@ Makefile(必选)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/openwrt/" target="_blank">
-                        <span class="chip bg-color">openwrt</span>
+                    <a href="/tags/c/" target="_blank">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/article/339e02f9/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="hexo cmd">
-                        
-                        <span class="card-title">hexo cmd</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            新建网站hexo init [folder]新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。
-新建文章hexo new [layout] &lt;title&gt;新建一篇文章。如果没有设置 layout 
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/测试/" class="post-category" target="_blank">
-                                    测试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/test/" target="_blank">
-                        <span class="chip bg-color">test</span>
+                    <a href="/tags/dll/" target="_blank">
+                        <span class="chip bg-color">dll</span>
                     </a>
                     
                 </div>
