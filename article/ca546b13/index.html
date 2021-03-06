@@ -490,7 +490,7 @@ https://wido.me/sunteya/unde">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h1><ul>
-<li>方法一：使用dash控制面板<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_2907-zFEHAkhF4zrW3km2.jpg" style="zoom:200%;"> 
+<li>方法一：使用dash控制面板<img src="https://nas.littlekang.xyz:9000/markdown/2020-09/1223_2907-zFEHAkhF4zrW3km2.jpg" style="zoom:200%;"> 
 
 
 </li>
@@ -507,13 +507,13 @@ https://wido.me/sunteya/unde">
 </blockquote>
 </li>
 <li><p>login shell 和 no login shell</p>
-<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_3347-kkjuPPBJEw17jWnL.jpg" style="zoom:200%;"> 
+<img src="https://nas.littlekang.xyz:9000/markdown/2020-09/1223_3347-kkjuPPBJEw17jWnL.jpg" style="zoom:200%;"> 
 
 
 </li>
 </ul>
 <ul>
-<li>bash和profile的区别<br><img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_3549-iAkr3fiYRh8gCKbJ.jpg" alt> </li>
+<li>bash和profile的区别<br><img src="https://nas.littlekang.xyz:9000/markdown/2020-09/1223_3549-iAkr3fiYRh8gCKbJ.jpg" alt> </li>
 </ul>
 <h1 id="拷贝root用户配置文件"><a href="#拷贝root用户配置文件" class="headerlink" title="拷贝root用户配置文件"></a>拷贝root用户配置文件</h1><ul>
 <li><p>root ssh登录拷贝</p>
@@ -531,18 +531,18 @@ fi
 fi
 mesg n || true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个脚本中的 <code>$BASH</code>判断用户使用的shell是否是bash shell,所以如果创建时没有选对，可以通过<code>/etc/passwd</code>修改</p>
-<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4100-DJwRk8Jhq8dmBY3M.jpg" style="zoom:200%;"> 
+<img src="https://nas.littlekang.xyz:9000/markdown/2020-09/1223_4100-DJwRk8Jhq8dmBY3M.jpg" style="zoom:200%;"> 
 
 </li>
 </ul>
 <h1 id="关于新建用户不能shell登录问题"><a href="#关于新建用户不能shell登录问题" class="headerlink" title="关于新建用户不能shell登录问题"></a>关于新建用户不能shell登录问题</h1><ul>
-<li>原因：sshd配置文件中对可登录的user group做了限定<br>/etc/ssh/sshd_config中：<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4624-iVQ2NTr0Thy8LQWv.jpg" style="zoom:200%;"> 
+<li>原因：sshd配置文件中对可登录的user group做了限定<br>/etc/ssh/sshd_config中：<img src="https://nas.littlekang.xyz:9000/markdown/2020-09/1223_4624-iVQ2NTr0Thy8LQWv.jpg" style="zoom:200%;"> 
 
 
 </li>
 </ul>
 <ul>
-<li>解决方法：修改用户所在组，将用户添加到ssh组； 或修改sshd_config，允许新user group;<img src="http://nas.minio.littlekang.xyz:10080/markdown/2020-09/1223_4403-3TF0NCMtNCuecyNE.jpg" style="zoom:200%;"> 
+<li>解决方法：修改用户所在组，将用户添加到ssh组； 或修改sshd_config，允许新user group;<img src="https://nas.littlekang.xyz:9000/markdown/2020-09/1223_4403-3TF0NCMtNCuecyNE.jpg" style="zoom:200%;"> 
 
 </li>
 </ul>

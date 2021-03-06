@@ -483,7 +483,7 @@
 <h1 id="简单实例-helloworld"><a href="#简单实例-helloworld" class="headerlink" title="简单实例-helloworld"></a>简单实例-helloworld</h1><ul>
 <li>工程文件结构：</li>
 </ul>
-<img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1319_0944-SWdRVTzlfwfZGN4V.jpg" style="zoom:150%;"> 
+<img src="https://nas.littlekang.xyz:9000/markdown/2021-02/1319_0944-SWdRVTzlfwfZGN4V.jpg" style="zoom:150%;"> 
 
 <ul>
 <li>src源码</li>
@@ -541,10 +541,10 @@ set(CMAKE_CXX_COMPILER ${tools}/bin/mipsel-openwrt-linux-g++)<span aria-hidden="
 <p>8. <strong>BOOST_ROOT</strong>： 对于需要boost库的用户来说，相关的boost库路径配置也需要设置，因此这里的路径即ARM下的boost路径，里面有include和lib。</p>
 <p>9. <strong>QT_QMAKE_EXECUTABLE</strong>: 对于Qt用户来说，需要更改相关的qmake命令切换成嵌入式版本，因此这里需要指定成相应的qmake路径（指定到qmake本身）</p>
 <h1 id="同一目录，多个源文件"><a href="#同一目录，多个源文件" class="headerlink" title="同一目录，多个源文件"></a>同一目录，多个源文件</h1><p><code>aux_source_directory</code> 命令，该命令会查找指定目录下的所有源文件，然后将结果存进指定变量名。其语法如下：</p>
-<pre><code>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</code></pre><p>示例：<br><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1322_3836-mzgMadNOWZqvuOiY.jpg" alt> </p>
+<pre><code>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</code></pre><p>示例：<br><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/1322_3836-mzgMadNOWZqvuOiY.jpg" alt> </p>
 <h1 id="多个目录，多个源文件"><a href="#多个目录，多个源文件" class="headerlink" title="多个目录，多个源文件"></a>多个目录，多个源文件</h1><p>对于这种情况，需要分别在项目<strong>根目录和子目录目录里各编写一个 CMakeLists.txt</strong> 文件。为了方便，我们可以先将子目录里的文件编译成静态库再由 main 函数调用；</p>
-<p>示例：<br><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1322_4206-UAFiDDl6tzpNYGRq.jpg" alt> </p>
-<p><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/1322_4336-xXV3JFlLStYyNXVy.jpg" alt> </p>
+<p>示例：<br><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/1322_4206-UAFiDDl6tzpNYGRq.jpg" alt> </p>
+<p><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/1322_4336-xXV3JFlLStYyNXVy.jpg" alt> </p>
 <h1 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h1><blockquote>
 <p><a href="https://www.hahack.com/codes/cmake/" target="_blank" rel="noopener">CMake 入门实战</a><br><a href="https://blog.csdn.net/weicao1990/article/details/51149381" target="_blank" rel="noopener">CMake交叉编译配置</a><br><a href="https://blog.csdn.net/whahu1989/article/details/104114515" target="_blank" rel="noopener">使用CMake交叉编译Arm Linux程序</a></p>
 </blockquote>

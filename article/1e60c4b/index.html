@@ -488,16 +488,16 @@
 <li>只有用户A，用户B和用户C有流量需求，想接收数据源发送的报文</li>
 </ul>
 <p>现分别采用<strong>单播</strong>、<strong>组播</strong>、<strong>广播</strong>方式进行报文的传输：</p>
-<h2 id="单播流量发送"><a href="#单播流量发送" class="headerlink" title="单播流量发送"></a>单播流量发送</h2><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2709_5327-aFOtpXPN9nWNiTbP.jpg" style="zoom:200%;">
+<h2 id="单播流量发送"><a href="#单播流量发送" class="headerlink" title="单播流量发送"></a>单播流量发送</h2><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2709_5327-aFOtpXPN9nWNiTbP.jpg" style="zoom:200%;">
 采用单播传输方式后，要确保有流量需求的用户都能收到流量，**数据源需要发送三份流量，相应的网络中设备B也需要承载三份流量**。
 
-<h2 id="广播流量发送"><a href="#广播流量发送" class="headerlink" title="广播流量发送"></a>广播流量发送</h2><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2709_5410-fQYXv89kahWmYLjD.jpg" style="zoom:200%;"> 
+<h2 id="广播流量发送"><a href="#广播流量发送" class="headerlink" title="广播流量发送"></a>广播流量发送</h2><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2709_5410-fQYXv89kahWmYLjD.jpg" style="zoom:200%;"> 
 采用广播传输方式后，**数据源仅发送一份流量**，有流量需求的用户可以收到流量，但是从图中可以看出，**因为广播的传输机制，无流量需求的用户D和用户E也收到了流量，存在流量的冗余**。
 
-<h2 id="组播流量发送"><a href="#组播流量发送" class="headerlink" title="组播流量发送"></a>组播流量发送</h2><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2709_5552-4B9P8qP1WPsnObw8.jpg" style="zoom:200%;"> 
+<h2 id="组播流量发送"><a href="#组播流量发送" class="headerlink" title="组播流量发送"></a>组播流量发送</h2><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2709_5552-4B9P8qP1WPsnObw8.jpg" style="zoom:200%;"> 
 采用组播传输方式后，**数据源仅发送一份流量**，有流量需求的用户就可以收到流量，而且**无流量需求的用户D和用户E也不会收到冗余的流量**。
 
-<h2 id="三种方式比较"><a href="#三种方式比较" class="headerlink" title="三种方式比较"></a>三种方式比较</h2><p><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2709_5947-mQTQG0QOWPwduGla.jpg" alt> </p>
+<h2 id="三种方式比较"><a href="#三种方式比较" class="headerlink" title="三种方式比较"></a>三种方式比较</h2><p><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2709_5947-mQTQG0QOWPwduGla.jpg" alt> </p>
 <h1 id="组播实现机制"><a href="#组播实现机制" class="headerlink" title="组播实现机制"></a>组播实现机制</h1><p>组播组网实现用户A，用户B和用户C能接收到数据源的流量，需要做如下部署：</p>
 <ul>
 <li><p>全网设备相连的接口都需要配置单播IP地址</p>
@@ -511,20 +511,20 @@
 </ul>
 <p>数据源发送数据流，该数据流二层目的MAC地址是组播的MAC地址，IP报文的目的地址为225.1.1.1。</p>
 <p><strong>组播实现机制总体来说就是接收者告诉一个中心节点</strong>（在组播协议里面称为RP），<strong>它需要哪些组地址的流量</strong>；<strong>RP需要被告之数据源</strong>（在组播场景中我们称之为组播源，它的特点是流量二层头中目的MAC地址是组播MAC地址，IP报层IP报文头目的地址是组播IP地址）在哪，数据源往哪些组地址发流。<strong>RP知道了接收方和发送方的所有信息后，就会根据需要把流量发送到特定位置</strong>（它发送的过程中建立了组播分发树）。</p>
-<img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2710_0445-6YUD9CfBOy72v0Qc.jpg" style="zoom:200%;"> 
+<img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2710_0445-6YUD9CfBOy72v0Qc.jpg" style="zoom:200%;"> 
 
-<h1 id="组播地址"><a href="#组播地址" class="headerlink" title="组播地址"></a>组播地址</h1><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2710_1952-Zvq5hI3EBwb8aZG2.jpg" style="zoom:200%;"> 
+<h1 id="组播地址"><a href="#组播地址" class="headerlink" title="组播地址"></a>组播地址</h1><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2710_1952-Zvq5hI3EBwb8aZG2.jpg" style="zoom:200%;"> 
 
 <h1 id="使用iperf测试UDP组播"><a href="#使用iperf测试UDP组播" class="headerlink" title="使用iperf测试UDP组播"></a>使用iperf测试UDP组播</h1><ul>
 <li>client<pre class="line-numbers language-shell"><code class="language-shell">iperf -c 225.0.0.20 -u --ttl 5 -t 10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2715_0530-PLMF5Z7XSzfmrhOc.jpg" style="zoom:200%;"> 
+<img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2715_0530-PLMF5Z7XSzfmrhOc.jpg" style="zoom:200%;"> 
 
 
 </li>
 </ul>
 <ul>
 <li>server<pre class="line-numbers language-shell"><code class="language-shell">iperf -s -u -B 225.0.0.20 -i 1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2715_0647-0QMUHA9DmxNAYqe3.jpg" style="zoom:200%;"> 
+<img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2715_0647-0QMUHA9DmxNAYqe3.jpg" style="zoom:200%;"> 
 
 
 </li>
@@ -557,7 +557,7 @@
 <td>设置是否将多播数据副本传送到发送主机</td>
 </tr>
 </tbody></table>
-<h2 id="发送组播数据包"><a href="#发送组播数据包" class="headerlink" title="发送组播数据包"></a>发送组播数据包</h2><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2710_5128-G4BNR9xF4ePxwLhb.jpg" alt> </p>
+<h2 id="发送组播数据包"><a href="#发送组播数据包" class="headerlink" title="发送组播数据包"></a>发送组播数据包</h2><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2710_5128-G4BNR9xF4ePxwLhb.jpg" alt> </p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* Send Multicast Datagram code example. */</span>
 
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
@@ -646,7 +646,7 @@
 <span class="token macro property">#<span class="token directive keyword">endif</span></span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="接收组播数据包"><a href="#接收组播数据包" class="headerlink" title="接收组播数据包"></a>接收组播数据包</h2><h2 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h2><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2711_5542-J6ewn43aC6nDCw7g.jpg" style="zoom:200%;"> 
+<h2 id="接收组播数据包"><a href="#接收组播数据包" class="headerlink" title="接收组播数据包"></a>接收组播数据包</h2><h2 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h2><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2711_5542-J6ewn43aC6nDCw7g.jpg" style="zoom:200%;"> 
 
 <h2 id="代码示例-1"><a href="#代码示例-1" class="headerlink" title="代码示例"></a>代码示例</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* Receiver/client multicast Datagram example. */</span>
 
@@ -744,7 +744,7 @@
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="组播应用"><a href="#组播应用" class="headerlink" title="组播应用"></a>组播应用</h1><h2 id="IPTV"><a href="#IPTV" class="headerlink" title="IPTV"></a>IPTV</h2><img src="http://nas.littlekang.xyz:9000/markdown/2021-02/2710_1724-fLIYCScNopQWQDeV.jpg" style="zoom:200%;"> 
+<h1 id="组播应用"><a href="#组播应用" class="headerlink" title="组播应用"></a>组播应用</h1><h2 id="IPTV"><a href="#IPTV" class="headerlink" title="IPTV"></a>IPTV</h2><img src="https://nas.littlekang.xyz:9000/markdown/2021-02/2710_1724-fLIYCScNopQWQDeV.jpg" style="zoom:200%;"> 
 
 
 
